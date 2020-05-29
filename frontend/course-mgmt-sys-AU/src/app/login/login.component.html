@@ -34,10 +34,16 @@
             type="password"
             pInputText />
         </div>
+
+        <div class="ui negative message" *ngIf="invalidLogin">
+            <div class="header">Unable to Login!!!</div>
+            <p>Invalid credentials</p>
+        </div>
+
         <button class="ui primary button" 
             type="submit" 
             [disabled]="!loginForm.valid" >Login</button>
-            <button class="ui primary button" 
+        <button class="ui primary button" 
             type="button" 
             (click)="signinWithGoogle()" 
             style="float: right;" >Google Sign-in</button>

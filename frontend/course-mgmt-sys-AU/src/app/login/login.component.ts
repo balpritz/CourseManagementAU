@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
+import { AutheticateLoginService } from '../service/autheticate-login.service';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +11,15 @@ import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 })
 export class LoginComponent implements OnInit {
 
-  emailId: string = '';
-  password: string = '';
+  emailId: string;
+  password: string;
+  invalidLogin: boolean = false;
   loginForm: FormGroup;
 
-  constructor(private route: Router, private fb: FormBuilder, private socialAuthService: AuthService) { }
+  constructor(private route: Router, 
+    private fb: FormBuilder, 
+    private socialAuthService: AuthService,
+    private authLogin: AutheticateLoginService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -24,7 +29,17 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    this.route.navigate(['home']); 
+    this.invalidLogin = false;
+    this.emailId = this.loginForm.get('emailId').value;
+    this.password = this.loginForm.get('password').value;
+
+    this.authLogin.executeLoginAuthentication(this.emailId, this.password).subscribe(
+      data => this.route.navigate(['home']),
+      error => {
+        console.log(error);
+        this.invalidLogin = true;
+      }
+    );
   }
 
   signinWithGoogle() {
