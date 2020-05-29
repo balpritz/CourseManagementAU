@@ -1,0 +1,41 @@
+<section class="ui segment" style="margin-left: 500px; margin-right: 500px; margin-top: 150px;">
+    <h3 class="ui block header"
+        style="text-align: center; color:#1767b1" >
+        <img src="../../assets/accolite-logo.png" class="ui small image" />
+        MS AU Course Management Portal
+    </h3>
+    <div class="ui divider"></div>
+    <form class="ui form" [formGroup]="loginForm" (ngSubmit)="handleLogin()" >
+        <div class="required field">
+        <label class="control-label">Email</label>
+        <!--error message in case of invalid email input or no input-->
+        <div class="ui pointing below prompt label"
+            id="form-input-first-name-error-message"
+            role="alert"
+            *ngIf="!loginForm.controls['emailId'].valid && loginForm.controls['emailId'].dirty"
+            aria-atomic="true">Invalid email</div>
+
+        <input formControlName="emailId"
+            placeholder="Enter your Email"
+            pInputText />
+        </div>
+        <div class="required field">
+        <label>Password</label>
+        <!--error message in case of no input in the password field-->
+        <div class="ui pointing below prompt label"
+            id="form-input-first-name-error-message"
+            role="alert"
+            *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].dirty"
+            aria-atomic="true">Password is required</div>
+
+        <input type="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            type="password"
+            pInputText />
+        </div>
+        <button class="ui primary button" 
+            type="submit" 
+            [disabled]="!loginForm.valid" >Login</button>
+    </form>
+</section>
