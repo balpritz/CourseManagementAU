@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
   loginForm: FormGroup;
 
-  constructor(private route: Router, private fb: FormBuilder) { }
+  constructor(private route: Router, private fb: FormBuilder, private socialAuthService: AuthService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -24,5 +25,16 @@ export class LoginComponent implements OnInit {
 
   handleLogin() {
     this.route.navigate(['home']); 
+  }
+
+  signinWithGoogle() {
+    let socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+
+    this.socialAuthService.signIn(socialPlatformProvider)
+    .then((userData) => {
+        console.log(userData);
+    });
+
+    this.route.navigate(['home']);
   }
 }

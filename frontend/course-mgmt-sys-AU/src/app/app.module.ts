@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+import { getAuthServiceConfigs } from './socialloginConfig';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,8 +24,12 @@ import { HomeComponent } from './home/home.component';
     InputTextModule,
     FormsModule,
     ReactiveFormsModule,
+    SocialLoginModule,
   ],
-  providers: [],
+  providers: [ {
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs,
+  } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
