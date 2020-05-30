@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class RestfulWebServices {
 	
+	@CrossOrigin(origins="http://localhost:4200")
 	@PostMapping("/authenticate")
 	public ResponseEntity<Void> authenticateLogin(@RequestBody LoginDetails login) {
 		System.out.println("works");
@@ -17,5 +18,4 @@ public class RestfulWebServices {
 	public String testget() {
 		return "yes it works";
 	}
-	
 }

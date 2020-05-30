@@ -17,5 +17,4 @@ public class RestfulWebServices {
 	public String testget() {
 		return "yes it works";
 	}
-	
 }

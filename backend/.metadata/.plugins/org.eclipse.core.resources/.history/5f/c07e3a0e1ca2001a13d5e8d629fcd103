@@ -9,13 +9,6 @@ public class RestfulWebServices {
 	
 	@PostMapping("/authenticate")
 	public ResponseEntity<Void> authenticateLogin(@RequestBody LoginDetails login) {
-		System.out.println("works");
 		return ResponseEntity.noContent().build();
 	}
-	
-	@GetMapping("/test")
-	public String testget() {
-		return "yes it works";
-	}
-	
 }

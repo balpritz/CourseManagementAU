@@ -12,10 +12,4 @@ public class RestfulWebServices {
 		System.out.println("works");
 		return ResponseEntity.noContent().build();
 	}
-	
-	@GetMapping("/test")
-	public String testget() {
-		return "yes it works";
-	}
-	
 }
