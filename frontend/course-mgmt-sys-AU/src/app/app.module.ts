@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { getAuthServiceConfigs } from './socialloginConfig';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,18 +12,25 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
+import { HeaderNavComponent } from './header-nav/header-nav.component';
+import { NewCourseComponent } from './new-course/new-course.component';
+import { ViewCoursesComponent } from './view-courses/view-courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ErrorComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderNavComponent,
+    NewCourseComponent,
+    ViewCoursesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     InputTextModule,
+    InputTextareaModule,
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,

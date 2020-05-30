@@ -1,0 +1,51 @@
+<app-header-nav></app-header-nav>
+<section style="margin-left: 20px; margin-right:20px" >
+    <h3 class="ui header">
+        <i aria-hidden="true" class="plus square outline icon"></i>
+        <div class="content">
+          New Course
+          <div class="sub header">Add a new course to the Accolite University training program</div>
+        </div>
+    </h3>
+    <div>
+        <form class="ui form" [formGroup]="newCourseForm" (ngSubmit)="handleNewCourseAddition()" >
+            <div class="required field">
+            <label>Course Title</label>
+            <!--error message in case of empty field-->
+            <div class="ui pointing below prompt label"
+                role="alert"
+                *ngIf="!newCourseForm.controls['courseTitle'].valid && newCourseForm.controls['courseTitle'].dirty"
+                aria-atomic="true">Course title is required</div>
+
+            <input formControlName="courseTitle" 
+                placeholder="Title of the course"
+                pInputText /></div>
+            <!--End of the first field-->
+            <div class="required field">
+            <label>Course Description</label>
+            <!--error message in case of empty field-->
+            <div class="ui pointing below prompt label"
+                role="alert"
+                *ngIf="!newCourseForm.controls['courseDescription'].valid && newCourseForm.controls['courseDescription'].dirty"
+                aria-atomic="true">Course description is required</div>
+                
+            <textarea formControlName="courseDescription"
+                placeholder="Provide a brief description of the course along with appropriate pre-requisites" 
+                [rows]="8" pInputTextarea></textarea></div>
+            <!--End of the second field-->
+            <div class=" required field">
+            <label>Skills acquired post completion of course</label>
+            <!--error message in case of empty field-->
+            <div class="ui pointing below prompt label"
+                role="alert"
+                *ngIf="!newCourseForm.controls['skillsAcquired'].valid && newCourseForm.controls['skillsAcquired'].dirty"
+                aria-atomic="true">Specify skills acquired</div>
+
+            <textarea formControlName="skillsAcquired"
+                placeholder="Add a ';' (semi-colon) as a delimiter at the end of each skill specified" 
+                [rows]="1" pInputTextarea></textarea></div>
+
+            <button type="submit" class="ui primary button" [disabled]="!newCourseForm.valid" >Add</button>
+        </form>
+    </div>
+</section>

@@ -10,7 +10,6 @@
         <label class="control-label">Email</label>
         <!--error message in case of invalid email input or no input-->
         <div class="ui pointing below prompt label"
-            id="form-input-first-name-error-message"
             role="alert"
             *ngIf="!loginForm.controls['emailId'].valid && loginForm.controls['emailId'].dirty"
             aria-atomic="true">Invalid email</div>
@@ -23,7 +22,6 @@
         <label>Password</label>
         <!--error message in case of no input in the password field-->
         <div class="ui pointing below prompt label"
-            id="form-input-first-name-error-message"
             role="alert"
             *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].dirty"
             aria-atomic="true">Password is required</div>
