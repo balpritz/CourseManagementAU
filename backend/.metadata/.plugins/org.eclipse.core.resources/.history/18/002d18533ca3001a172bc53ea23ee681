@@ -18,7 +18,6 @@ public class UserDetails {
 	private String password;
 	private String photoUrl;
 	
-	//----------------------GETTERS AND SETTERS-------------------------------
 	public String getId() {
 		return id;
 	}
