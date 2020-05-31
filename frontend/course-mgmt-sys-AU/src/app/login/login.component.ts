@@ -2,7 +2,7 @@ import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
-import { AutheticateLoginService } from '../service/autheticate-login.service';
+import { AutheticateLoginService } from '../services/autheticate-login.service';
 
 @Component({
   selector: 'app-login',
@@ -34,14 +34,8 @@ export class LoginComponent implements OnInit {
     this.password = this.loginForm.get('password').value;
 
     this.authLogin.executeLoginAuthentication(this.emailId, this.password).subscribe(
-      data => {
-        console.log("works");
-        this.route.navigate(['home']);
-      },
-      error => {
-        console.log(error);
-        this.invalidLogin = true;
-      }
+      data => this.route.navigate(['home']),
+      error => this.invalidLogin = true
     );
   }
 

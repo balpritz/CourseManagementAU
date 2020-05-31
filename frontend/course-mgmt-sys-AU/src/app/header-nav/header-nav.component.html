@@ -12,7 +12,11 @@
           routerLink="/new-course" >New Course</a>
           
         <a class="item" >Edit Courses</a>
-        <a class="item" >View all Courses</a>
+        <a class="item"
+        routerLinkActive="active item"
+        [routerLinkActiveOptions]="{exact : true}"
+        routerLink="/view-courses" >View all Courses</a>
+        
         <div class="right menu">
           <div class="item">
             <div class="ui icon input">

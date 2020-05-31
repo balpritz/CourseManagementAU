@@ -13,14 +13,14 @@ export class AutheticateLoginService {
 
   constructor(private http: HttpClient) { }
 
-  executeLoginAuthentication(emailId: string, password: string) {
+  executeLoginAuthentication(email: string, password: string) {
     return this.http.post<any>(`${API_URL}/authenticate`, {
-      emailId,
+      email,
       password
     }).pipe(
       map(
         data => {
-          sessionStorage.setItem(AUTHENTICATED_USER, emailId);
+          sessionStorage.setItem(AUTHENTICATED_USER, email);
           sessionStorage.setItem(PASSWORD, password);
         }
       )

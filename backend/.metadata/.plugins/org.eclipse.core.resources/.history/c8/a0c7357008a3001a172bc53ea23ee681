@@ -1,0 +1,40 @@
+package resource;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import model.UserDetails;
+import repository.UserRepository;
+
+@CrossOrigin(origins="http://localhost:4200")
+@RestController
+public class UserResource {
+	
+	@Autowired
+	private UserRepository userRepo;
+	
+	@GetMapping("/testdb")
+	public List<UserDetails> getDetails() {
+		System.out.println("running");
+		
+		return userRepo.findAll();
+	}
+	
+	@PostMapping("/authenticate")
+	public ResponseEntity<String> authenticateLogin(@RequestBody UserDetails user) {
+		UserDetails dbUser = userRepo.findByEmail(user.getEmail());
+		System.out.println(dbUser);
+		System.out.println(dbUser.getPassword());
+		System.out.println(user.getPassword());
+		if(true) {
+			System.out.println(user.getPassword());
+			return ResponseEntity.noContent().build();
+		} else
+		return new ResponseEntity<String>("Unauthorized", HttpStatus.UNAUTHORIZED);
+	}
+	
+}

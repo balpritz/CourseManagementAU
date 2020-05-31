@@ -1,0 +1,24 @@
+package resource;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import model.UserDetails;
+import repository.UserRepository;
+
+@RestController
+public class UserResource {
+	
+	@Autowired
+	private UserRepository userRepo;
+	
+	@GetMapping("/testdb")
+	public List<UserDetails> getDetails() {
+		System.out.println("running");
+		
+		return userRepo.findAll();
+	}
+	
+}
