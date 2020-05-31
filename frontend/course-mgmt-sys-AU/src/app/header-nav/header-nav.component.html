@@ -13,9 +13,9 @@
           
         <a class="item" >Edit Courses</a>
         <a class="item"
-        routerLinkActive="active item"
-        [routerLinkActiveOptions]="{exact : true}"
-        routerLink="/view-courses" >View all Courses</a>
+          routerLinkActive="active item"
+          [routerLinkActiveOptions]="{exact : true}"
+          routerLink="/view-courses" >View all Courses</a>
         
         <div class="right menu">
           <div class="item">
@@ -24,7 +24,9 @@
               <i aria-hidden="true" class="search icon"></i>
             </div>
           </div>
-          <a class="item" >Logout</a>
+          <a class="item"
+            routerLink="/login"
+            (click)="handleLogout()">Logout</a>
         </div>
     </div>
 </section>

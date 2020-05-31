@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AUTHENTICATED_USER, PASSWORD } from '../app.constants';
 
 @Component({
   selector: 'app-header-nav',
@@ -10,5 +11,10 @@ export class HeaderNavComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+  }
+
+  handleLogout() {
+    sessionStorage.removeItem(AUTHENTICATED_USER);
+    sessionStorage.removeItem(PASSWORD);
   }
 }
