@@ -26,16 +26,4 @@ public class UserResource {
 		return new ResponseEntity<String>("Unauthorized", HttpStatus.UNAUTHORIZED);
 	}
 	
-	@PostMapping("/authenticate-google-user")
-	public ResponseEntity<Void> authenticateGoogleUser(@RequestBody UserDetails user) {
-		UserDetails dbUser = userRepo.findByEmail(user.getEmail());
-		
-		if(dbUser != null) {
-			return ResponseEntity.noContent().build();
-		} else {
-			userRepo.saveAndFlush(user);
-			return ResponseEntity.noContent().build();
-		}
-	}
-	
 }

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { AutheticateLoginService } from '../services/autheticate-login.service';
+import { RegisterGoogleUsersService } from '../services/register-google-users.service';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(private route: Router, 
     private fb: FormBuilder, 
     private socialAuthService: AuthService,
-    private authLogin: AutheticateLoginService) { }
+    private authLogin: AutheticateLoginService,
+    private googleLogin: RegisterGoogleUsersService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -32,21 +35,24 @@ export class LoginComponent implements OnInit {
     this.invalidLogin = false;
     this.emailId = this.loginForm.get('emailId').value;
     this.password = this.loginForm.get('password').value;
+    let hashedPasword = Md5.hashStr(this.password).toString();
 
-    this.authLogin.executeLoginAuthentication(this.emailId, this.password).subscribe(
+    this.authLogin.executeLoginAuthentication(this.emailId, hashedPasword).subscribe(
       data => this.route.navigate(['home']),
       error => this.invalidLogin = true
     );
   }
 
   signinWithGoogle() {
+    this.invalidLogin = false;
     let socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
 
     this.socialAuthService.signIn(socialPlatformProvider)
     .then((userData) => {
-        console.log(userData);
-    });
-
-    this.route.navigate(['home']);
+      this.googleLogin.executeGoogleSignIn(userData).subscribe(
+        data => this.route.navigate(['home']),
+        error => this.invalidLogin = true
+      );
+    }).catch(error => this.invalidLogin = true);
   }
 }

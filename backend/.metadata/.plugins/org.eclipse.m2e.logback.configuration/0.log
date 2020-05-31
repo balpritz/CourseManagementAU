@@ -1428,3 +1428,23 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact antlr:antlr:j
 2020-05-31 12:05:00,310 [Worker-108: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2020-05-31 12:05:00,312 [Worker-108: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-05-31 12:05:00,312 [Worker-108: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/balpreet/Documents/CourseManagementSystemAU/backend/course-management-system/src/test/resources
+2020-05-31 13:01:56,171 [Worker-127: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-05-31 13:01:56,176 [Worker-127: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-05-31 13:01:56,179 [Worker-127: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-05-31 13:01:56,188 [Worker-127: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-05-31 13:01:56,189 [Worker-127: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/balpreet/Documents/CourseManagementSystemAU/backend/course-management-system/src/test/resources
+2020-05-31 13:09:02,424 [Worker-134: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-05-31 13:09:02,429 [Worker-134: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-05-31 13:09:02,432 [Worker-134: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-05-31 13:09:02,436 [Worker-134: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-05-31 13:09:02,436 [Worker-134: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/balpreet/Documents/CourseManagementSystemAU/backend/course-management-system/src/test/resources
+2020-05-31 13:11:46,209 [Worker-133: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-05-31 13:11:46,211 [Worker-133: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-05-31 13:11:46,214 [Worker-133: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-05-31 13:11:46,216 [Worker-133: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-05-31 13:11:46,216 [Worker-133: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/balpreet/Documents/CourseManagementSystemAU/backend/course-management-system/src/test/resources
+2020-05-31 13:33:07,952 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-05-31 13:33:07,955 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-05-31 13:33:07,958 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-05-31 13:33:07,960 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-05-31 13:33:07,961 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/balpreet/Documents/CourseManagementSystemAU/backend/course-management-system/src/test/resources

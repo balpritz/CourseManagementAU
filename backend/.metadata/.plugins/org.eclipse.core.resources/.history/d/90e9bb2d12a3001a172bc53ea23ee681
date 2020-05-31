@@ -27,7 +27,7 @@ public class UserResource {
 	}
 	
 	@PostMapping("/authenticate-google-user")
-	public ResponseEntity<Void> authenticateGoogleUser(@RequestBody UserDetails user) {
+	public ResponseEntity<String> authenticateGoogleUser(@RequestBody UserDetails user) {
 		UserDetails dbUser = userRepo.findByEmail(user.getEmail());
 		
 		if(dbUser != null) {
