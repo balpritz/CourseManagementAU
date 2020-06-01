@@ -31,4 +31,12 @@ export class CourseDataService {
   getAllUserDetails() {
     return this.http.get(`${API_URL}/get/users`);
   }
+
+  getUserDetails(id: string) {
+    return this.http.get(`${API_URL}/get/users/${id}`);
+  }
+
+  getCourseDetails(id: number) {
+    return this.http.get(`${API_URL}/get/courses/${id}`);
+  }
 }

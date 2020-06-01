@@ -1,9 +1,9 @@
 package resource;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import model.UserDetails;
@@ -16,16 +16,9 @@ public class UserResource {
 	@Autowired
 	private UserRepository userRepo;
 	
-	// to get the entire user data
 	@GetMapping("/get/users")
 	public List<UserDetails> getAllUserDetails() {
 		return userRepo.findAll();
-	}
-	
-	// to retrieve a particular user's data
-	@GetMapping("/get/users/{id}")
-	public Optional<UserDetails> getUserDetails(@PathVariable String id) {
-		return userRepo.findById(id);
 	}
 	
 	// to authenticate normal login
@@ -42,14 +35,14 @@ public class UserResource {
 	
 	// to authenticate google sign-in
 	@PostMapping("/authenticate-google-user")
-	public UserDetails authenticateGoogleUser(@RequestBody UserDetails user) {
+	public ResponseEntity<Void> authenticateGoogleUser(@RequestBody UserDetails user) {
 		UserDetails dbUser = userRepo.findByEmail(user.getEmail());
 		
 		if(dbUser != null) {
-			return dbUser;
+			return ResponseEntity.noContent().build();
 		} else {
 			userRepo.saveAndFlush(user);
-			return userRepo.findByEmail(user.getEmail());
+			return ResponseEntity.noContent().build();
 		}
 	}
 	

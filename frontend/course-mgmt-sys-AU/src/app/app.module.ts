@@ -15,6 +15,8 @@ import { HomeComponent } from './home/home.component';
 import { HeaderNavComponent } from './header-nav/header-nav.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { ViewCoursesComponent } from './view-courses/view-courses.component';
+import { CourseMainpageComponent } from './course-mainpage/course-mainpage.component';
+import { EditCoursesComponent } from './edit-courses/edit-courses.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ViewCoursesComponent } from './view-courses/view-courses.component';
     HomeComponent,
     HeaderNavComponent,
     NewCourseComponent,
-    ViewCoursesComponent
+    ViewCoursesComponent,
+    CourseMainpageComponent,
+    EditCoursesComponent
   ],
   imports: [
     BrowserModule,

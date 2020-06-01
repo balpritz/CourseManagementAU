@@ -1,0 +1,41 @@
+<app-header-nav></app-header-nav>
+<section style="margin-left: 20px; margin-right:20px" >
+    <h3 class="ui header">
+        <i aria-hidden="true" class="book icon"></i>
+        <div class="content" *ngIf="courseData">
+          {{courseData.courseTitle}}
+          <div class="sub header" *ngIf="userData">
+            Created by {{userData.firstName}} {{userData.lastName}}
+            <a href="mailto:{{userData.email}}" style="color: black;">
+            &nbsp;<i class="mail icon" *ngIf="userData"></i>
+            </a>
+            &emsp;Last updated {{courseData.lastUpdated}}
+          </div>
+        </div>
+    </h3>
+    <!-- Description -->
+    <div class="ui horizontal divider">
+      <h4 class="ui header">
+        <i aria-hidden="true" class="tag icon"></i>
+        Description
+      </h4>
+    </div>
+    <p *ngIf="courseData" style="font-size: 15px;">{{courseData.courseDescription}}</p>
+    <div class="ui horizontal divider">
+      <h4 class="ui header">
+        <i aria-hidden="true" class="tasks icon"></i>
+        Skills Acquired Post Completion of Course
+      </h4>
+    </div>
+    <!-- Skills -->
+    <section class="ui segment" style="margin-left: 500px; margin-right: 500px;" >
+      <div role="list" class="ui divided relaxed list" *ngFor="let skill of skills">
+        <div role="listitem" class="item">
+          <i aria-hidden="true" class="check icon middle aligned"></i>
+          <div class="content">
+            <p *ngIf="courseData" style="font-size: 15px;">{{skill}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+</section>

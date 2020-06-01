@@ -23,8 +23,8 @@ public class UserResource {
 	}
 	
 	// to retrieve a particular user's data
-	@GetMapping("/get/users/{id}")
-	public Optional<UserDetails> getUserDetails(@PathVariable String id) {
+	@GetMapping("/get/user/{id}")
+	public Optional<UserDetails> getUserDataById(@PathVariable String id) {
 		return userRepo.findById(id);
 	}
 	

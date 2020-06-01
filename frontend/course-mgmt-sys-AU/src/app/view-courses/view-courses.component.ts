@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseDataService } from '../services/data/course-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-courses',
@@ -11,22 +12,26 @@ export class ViewCoursesComponent implements OnInit {
   courseList: any;
   users: any;
 
-  constructor(private courseService: CourseDataService) { }
+  constructor(private courseService: CourseDataService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getUserData();
-    this.populateCourseData();
+    this.getUsersData();
+    this.getAllCourseData();
   }
 
-  populateCourseData(){
+  getAllCourseData(){
     this.courseService.getAllCourseDetails().subscribe(
       data => this.courseList = data
     );
   }
   
-  getUserData() {
+  getUsersData() {
     this.courseService.getAllUserDetails().subscribe(
       data => this.users = data
     );
+  }
+
+  viewCourseMainPage(courseId: number, creatorId: string) {
+    this.router.navigate([`view-courses/${courseId}`], {state: {data: { creatorId }}});
   }
 }

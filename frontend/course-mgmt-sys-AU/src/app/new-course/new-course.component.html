@@ -42,15 +42,13 @@
                 aria-atomic="true">Specify skills acquired</div>
 
             <textarea formControlName="skillsAcquired"
-                placeholder="Add a ';' (semi-colon) as a delimiter at the end of each skill specified" 
+                placeholder="Add a ';' (semi-colon) as a delimiter at the end of each skill specified excluding the last one" 
                 [rows]="1" pInputTextarea></textarea></div>
             
             <!--Success Message-->
-            <div class="ui success message" *ngIf="success">
-                <div class="content">
-                    <div class="header">New course was created successfully!!!</div>
-                      <p>Redirecting to Home page...</p>
-                </div>
+            <div class="ui positive message" *ngIf="success">
+                <div class="header">New course was created successfully!!!</div>
+                <p>Redirecting to Home page...</p>
             </div>
 
             <!--Error Message-->

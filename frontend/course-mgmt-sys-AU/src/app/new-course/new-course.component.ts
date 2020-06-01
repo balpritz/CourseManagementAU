@@ -43,7 +43,7 @@ export class NewCourseComponent implements OnInit {
           setTimeout(() => {
             this.router.navigate(['home']);
           },
-          4000);
+          3500);
         },
         error => this.failure = true
       );

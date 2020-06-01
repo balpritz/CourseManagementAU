@@ -40,7 +40,7 @@
                   <span style="color:red; font-weight: bold;">INACTIVE</span>
                 </td>
                 <td class="">
-                    <button class="ui basic blue animated button">
+                    <button class="ui basic blue animated button" (click)="viewCourseMainPage(course.courseId, course.creatorId)">
                         <div class="visible content">View</div>
                         <div class="hidden content"><i aria-hidden="true" class="arrow right icon"></i></div>
                     </button>

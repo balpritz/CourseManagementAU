@@ -1,7 +1,6 @@
 package resource;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,12 +21,6 @@ public class CourseResource {
 	@GetMapping("/get/courses")
 	public List<CourseDetails> getAllCourseDetails() {
 		return courseRepo.findAll();
-	}
-	
-	// to retrieve the details of a particular course
-	@GetMapping("/get/courses/{id}")
-	public Optional<CourseDetails> getCourseDetails(@PathVariable int id) {
-		return courseRepo.findById(id);
 	}
 	
 	// to add a new course

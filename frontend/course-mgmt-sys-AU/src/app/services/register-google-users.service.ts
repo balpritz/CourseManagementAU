@@ -32,8 +32,9 @@ export class RegisterGoogleUsersService {
     }).pipe(
       map(
         data => {
-          sessionStorage.setItem(AUTHENTICATED_USER, userObject.id);
+          sessionStorage.setItem(AUTHENTICATED_USER, data.id);
           sessionStorage.setItem(PASSWORD, userObject.idToken);
+          return data;
         }
       )
     );
