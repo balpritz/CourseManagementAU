@@ -1,7 +1,5 @@
 package resource;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +14,6 @@ public class CourseResource {
 	
 	@Autowired
 	private CourseRepository courseRepo;
-	
-	// to get the list of all courses
-	@GetMapping("/get/courses")
-	public List<CourseDetails> getAllCourseDetails() {
-		return courseRepo.findAll();
-	}
 	
 	// to add a new course
 	@PostMapping("/add-new-course")

@@ -44,7 +44,8 @@
             <textarea formControlName="skillsAcquired"
                 placeholder="Add a ';' (semi-colon) as a delimiter at the end of each skill specified" 
                 [rows]="1" pInputTextarea></textarea></div>
-
+            
+            <!--Success Message-->
             <div class="ui success message" *ngIf="success">
                 <div class="content">
                     <div class="header">New course was created successfully!!!</div>
@@ -52,6 +53,7 @@
                 </div>
             </div>
 
+            <!--Error Message-->
             <div class="ui negative message" *ngIf="failure">
                 <div class="header">Error: Unable to create course!!!</div>
                 <p>A course with the same title already exists</p>

@@ -2,17 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_URL, AUTHENTICATED_USER } from '../../app.constants';
 
-interface CourseDetails {
-  courseId: number;
-  courseTitle: string;
-  courseDescription: string;
-  creatorId: string;
-  skillsAcquired: string;
-  isCourseActive: boolean;
-  courseCreationDate: Date;
-  lastUpdated: Date;
-}
-
 @Injectable({
   providedIn: 'root'
 })
