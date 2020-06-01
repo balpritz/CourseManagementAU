@@ -16,6 +16,7 @@ public class CourseDetails {
 	private String courseDescription;
 	private String creatorId;
 	private String skillsAcquired;
+	private Boolean isCourseActive;
 	
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate courseCreationDate;
@@ -64,6 +65,14 @@ public class CourseDetails {
 		this.skillsAcquired = skillsAcquired;
 	}
 
+	public Boolean getIsCourseActive() {
+		return isCourseActive;
+	}
+
+	public void setIsCourseActive(Boolean isCourseActive) {
+		this.isCourseActive = isCourseActive;
+	}
+
 	public LocalDate getCourseCreationDate() {
 		return courseCreationDate;
 	}
@@ -84,7 +93,8 @@ public class CourseDetails {
 	public String toString() {
 		return "CourseDetails [courseId=" + courseId + ", courseTitle=" + courseTitle + ", courseDescription="
 				+ courseDescription + ", creatorId=" + creatorId + ", skillsAcquired=" + skillsAcquired
-				+ ", courseCreationDate=" + courseCreationDate + ", lastUpdated=" + lastUpdated + "]";
+				+ ", isCourseActive=" + isCourseActive + ", courseCreationDate=" + courseCreationDate + ", lastUpdated="
+				+ lastUpdated + "]";
 	}
 
 	public CourseDetails() {}

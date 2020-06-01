@@ -5,6 +5,7 @@ import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { AutheticateLoginService } from '../services/autheticate-login.service';
 import { RegisterGoogleUsersService } from '../services/register-google-users.service';
 import { Md5 } from 'ts-md5/dist/md5';
+import { AUTHENTICATED_USER } from '../app.constants';
 
 @Component({
   selector: 'app-login',
@@ -38,8 +39,11 @@ export class LoginComponent implements OnInit {
     let hashedPasword = Md5.hashStr(this.password).toString();
 
     this.authLogin.executeLoginAuthentication(this.emailId, hashedPasword).subscribe(
-      data => this.route.navigate(['home']),
-      error => this.invalidLogin = true
+      data => {
+        if(data != null) {
+          this.route.navigate(['home']);
+        } else { this.invalidLogin = true; }
+      }
     );
   }
 
@@ -50,8 +54,7 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signIn(socialPlatformProvider)
     .then((userData) => {
       this.googleLogin.executeGoogleSignIn(userData).subscribe(
-        data => this.route.navigate(['home']),
-        error => this.invalidLogin = true
+        data => this.route.navigate(['home'])
       );
     }).catch(error => this.invalidLogin = true);
   }

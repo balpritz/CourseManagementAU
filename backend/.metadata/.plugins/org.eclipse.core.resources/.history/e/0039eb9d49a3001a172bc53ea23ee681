@@ -1,0 +1,10 @@
+package repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import model.CourseDetails;
+import model.UserDetails;
+
+public interface CourseRepository extends JpaRepository<CourseDetails, Integer> {
+	public UserDetails findByCourseTitle(String courseTitle);
+}

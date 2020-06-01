@@ -32,7 +32,7 @@ export class RegisterGoogleUsersService {
     }).pipe(
       map(
         data => {
-          sessionStorage.setItem(AUTHENTICATED_USER, userObject.email);
+          sessionStorage.setItem(AUTHENTICATED_USER, userObject.id);
           sessionStorage.setItem(PASSWORD, userObject.idToken);
         }
       )

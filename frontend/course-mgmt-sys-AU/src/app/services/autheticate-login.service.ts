@@ -17,10 +17,13 @@ export class AutheticateLoginService {
     }).pipe(
       map(
         data => {
-          sessionStorage.setItem(AUTHENTICATED_USER, email);
-          sessionStorage.setItem(PASSWORD, password);
+          if(data != null) {
+            sessionStorage.setItem(AUTHENTICATED_USER, data.id);
+            sessionStorage.setItem(PASSWORD, data.password);
+          }
+          return data;
         }
-      )
-    );
+    ));
   }
+
 }

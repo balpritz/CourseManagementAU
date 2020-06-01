@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { CourseDataService } from '../services/data/course-data.service';
 
 @Component({
   selector: 'app-new-course',
@@ -9,8 +10,13 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 export class NewCourseComponent implements OnInit {
 
   newCourseForm: FormGroup;
+  courseTitle: string;
+  courseDescription: string;
+  skillsAcquired: string;
+  success: boolean = false;
+  failure: boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private courseService: CourseDataService) { }
 
   ngOnInit(): void {
     this.newCourseForm = this.fb.group({
@@ -21,7 +27,17 @@ export class NewCourseComponent implements OnInit {
   }
 
   handleNewCourseAddition() {
+    this.success = false;
+    this.failure = false;
+    this.courseTitle = this.newCourseForm.get('courseTitle').value;
+    this.courseDescription = this.newCourseForm.get('courseDescription').value;
+    this.skillsAcquired = this.newCourseForm.get('skillsAcquired').value;
 
+    this.courseService.createNewCourse(this.courseTitle, this.courseDescription, this.skillsAcquired)
+      .subscribe(
+        data => this.success = true,
+        error => this.failure = true
+      );
   }
 
 }
