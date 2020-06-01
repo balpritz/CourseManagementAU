@@ -39,9 +39,11 @@ export class NewCourseComponent implements OnInit {
     this.courseService.createNewCourse(this.courseTitle, this.courseDescription, this.skillsAcquired)
       .subscribe(
         data => {
-          console.log(data);
           this.success = true;
-          this.router.navigate(['home']);
+          setTimeout(() => {
+            this.router.navigate(['home']);
+          },
+          4000);
         },
         error => this.failure = true
       );

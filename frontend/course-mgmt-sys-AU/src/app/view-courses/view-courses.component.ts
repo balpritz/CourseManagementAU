@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseDataService } from '../services/data/course-data.service';
 
 @Component({
   selector: 'app-view-courses',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewCoursesComponent implements OnInit {
 
-  constructor() { }
+  courseList: any;
+  users: any;
+
+  constructor(private courseService: CourseDataService) { }
 
   ngOnInit(): void {
+    this.getUserData();
+    this.populateCourseData();
   }
 
+  populateCourseData(){
+    this.courseService.getAllCourseDetails().subscribe(
+      data => this.courseList = data
+    );
+  }
+  
+  getUserData() {
+    this.courseService.getAllUserDetails().subscribe(
+      data => this.users = data
+    );
+  }
 }

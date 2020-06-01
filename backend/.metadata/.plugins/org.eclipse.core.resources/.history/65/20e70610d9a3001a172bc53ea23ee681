@@ -1,7 +1,5 @@
 package resource;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +13,6 @@ public class UserResource {
 	
 	@Autowired
 	private UserRepository userRepo;
-	
-	@GetMapping("/get/users")
-	public List<UserDetails> getAllUserDetails() {
-		return userRepo.findAll();
-	}
 	
 	// to authenticate normal login
 	@PostMapping("/authenticate")

@@ -23,4 +23,12 @@ export class CourseDataService {
       lastUpdated: date,
     });
   }
+
+  getAllCourseDetails() {
+    return this.http.get(`${API_URL}/get/courses`);
+  }
+
+  getAllUserDetails() {
+    return this.http.get(`${API_URL}/get/users`);
+  }
 }

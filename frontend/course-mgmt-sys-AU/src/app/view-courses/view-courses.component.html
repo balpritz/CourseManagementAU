@@ -16,16 +16,29 @@
                 <th class="">Instructor's Name</th>
                 <th class="">Instructor's Email</th>
                 <th class="">Last Updated</th>
+                <th class="">Course Status</th>
                 <th class="">Course Main Page</th>
               </tr>
             </thead>
             <tbody class="">
-              <tr class="">
-                <td class="">Cell</td>
-                <td class="">Cell</td>
-                <td class="">Cell</td>
-                <td class="">Cell</td>
-                <td class="">Cell</td>
+              <tr class="" *ngFor="let course of courseList">
+                <td class="">{{course.courseId}}</td>
+                <td class="">{{course.courseTitle}}</td>
+                <ng-container *ngFor="let user of users">
+                  <td class="" *ngIf="course.creatorId == user.id">
+                    {{user.firstName}} {{user.lastName}}
+                  </td>
+                  <td class="" *ngIf="course.creatorId == user.id">
+                    {{user.email}}
+                  </td>
+                </ng-container>
+                <td class="">{{course.lastUpdated}}</td>
+                <td class="" *ngIf="course.isCourseActive">
+                  <span style="color:greenyellow; font-weight: bold;">ACTIVE</span>
+                </td>
+                <td class="" *ngIf="!course.isCourseActive">
+                  <span style="color:red; font-weight: bold;">INACTIVE</span>
+                </td>
                 <td class="">
                     <button class="ui basic blue animated button">
                         <div class="visible content">View</div>
