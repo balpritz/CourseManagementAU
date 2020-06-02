@@ -43,18 +43,4 @@ public class CourseResource {
 		courseRepo.saveAndFlush(newCourse);
 		return ResponseEntity.noContent().build();
 	}
-	
-	// to delete a particular course
-	@DeleteMapping("/delete/courses/{id}")
-	public ResponseEntity<Void> deleteCourseById(@PathVariable int id) {
-		Optional<CourseDetails> dbCourse = courseRepo.findById(id);
-		
-		if(dbCourse.isPresent()) {
-			courseRepo.deleteById(id);
-			return ResponseEntity.noContent().build();
-		}
-		
-		return ResponseEntity.notFound().build();
-	}
-	
 }

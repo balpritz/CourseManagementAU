@@ -39,4 +39,8 @@ export class CourseDataService {
   getCourseDetails(id: number) {
     return this.http.get(`${API_URL}/get/courses/${id}`);
   }
+
+  deleteCourse(courseId: number) {
+    return this.http.delete(`${API_URL}/delete/courses/${courseId}`);
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AUTHENTICATED_USER, PASSWORD } from '../app.constants';
+import { AUTHENTICATED_USER, PASSWORD, CREATOR_ID } from '../app.constants';
 
 @Component({
   selector: 'app-header-nav',
@@ -16,5 +16,6 @@ export class HeaderNavComponent implements OnInit {
   handleLogout() {
     sessionStorage.removeItem(AUTHENTICATED_USER);
     sessionStorage.removeItem(PASSWORD);
+    sessionStorage.removeItem(CREATOR_ID);
   }
 }

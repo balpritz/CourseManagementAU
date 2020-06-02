@@ -44,9 +44,8 @@ public class CourseResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	// to delete a particular course
 	@DeleteMapping("/delete/courses/{id}")
-	public ResponseEntity<Void> deleteCourseById(@PathVariable int id) {
+	public ResponseEntity<String> deleteCourseById(@PathVariable int id) {
 		Optional<CourseDetails> dbCourse = courseRepo.findById(id);
 		
 		if(dbCourse.isPresent()) {
@@ -54,7 +53,7 @@ public class CourseResource {
 			return ResponseEntity.noContent().build();
 		}
 		
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<String>("The specified record does not exist!", HttpStatus.BAD_REQUEST);
 	}
 	
 }

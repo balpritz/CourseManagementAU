@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import {InputTextareaModule} from 'primeng/inputtextarea';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { getAuthServiceConfigs } from './socialloginConfig';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +17,7 @@ import { NewCourseComponent } from './new-course/new-course.component';
 import { ViewCoursesComponent } from './view-courses/view-courses.component';
 import { CourseMainpageComponent } from './course-mainpage/course-mainpage.component';
 import { EditCoursesComponent } from './edit-courses/edit-courses.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditCoursesComponent } from './edit-courses/edit-courses.component';
     NewCourseComponent,
     ViewCoursesComponent,
     CourseMainpageComponent,
-    EditCoursesComponent
+    EditCoursesComponent,
+    UpdateCourseComponent
   ],
   imports: [
     BrowserModule,

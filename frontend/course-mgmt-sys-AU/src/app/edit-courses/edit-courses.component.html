@@ -1,1 +1,55 @@
 <app-header-nav></app-header-nav>
+<section style="margin-left: 20px; margin-right:20px" >
+    <h3 class="ui header">
+        <i aria-hidden="true" class="edit outline icon"></i>
+        <div class="content">
+          Edit Courses
+        <div class="sub header" *ngIf="user">
+            List of all courses created by {{user.firstName}} {{user.lastName}}</div>
+        </div>
+    </h3>
+    <div>
+        <table class="ui celled table">
+            <thead class="ui celled inverted blue table">
+              <tr class="">
+                <th class="">Course ID</th>
+                <th class="">Course Title</th>
+                <th class="">Last Updated</th>
+                <th class="">Course Status</th>
+                <th class="">Update Course Details</th>
+                <th class="">Delete Course</th>
+              </tr>
+            </thead>
+            <tbody class="">
+                <tr class="" *ngFor="let course of courseList">
+                    <td class="" *ngIf="course.creatorId == user.id">{{course.courseId}}</td>
+                    <td class="" *ngIf="course.creatorId == user.id">{{course.courseTitle}}</td>
+                    <td class="" *ngIf="course.creatorId == user.id">{{course.lastUpdated}}</td>
+                    <td class="" *ngIf="course.creatorId == user.id && course.isCourseActive">
+                        <span style="color:greenyellow; font-weight: bold;">ACTIVE</span>
+                    </td>
+                    <td class="" *ngIf="course.creatorId == user.id && !course.isCourseActive">
+                        <span style="color:red; font-weight: bold;">INACTIVE</span>
+                    </td>
+                    <td class="" *ngIf="course.creatorId == user.id">
+                        <button class="ui basic blue animated button">
+                            <div class="visible content">Update</div>
+                            <div class="hidden content"><i aria-hidden="true" class="pencil icon"></i></div>
+                        </button>
+                    </td>
+                    <td class="" *ngIf="course.creatorId == user.id">
+                        <button class="ui basic red animated button" (click)="handleCourseDeletion(course.courseId)">
+                            <div class="visible content">Delete</div>
+                            <div class="hidden content"><i aria-hidden="true" class="delete icon"></i></div>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--Success Message-->
+        <div class="ui positive message" *ngIf="success">
+            <div class="header">Course Deleted Successfully!!!</div>
+            <p>The course is no longer part of the Accolite University training curriculum. Refreshing ...</p>
+        </div>
+    </div>
+</section>
