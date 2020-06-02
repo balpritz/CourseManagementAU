@@ -33,6 +33,7 @@ public class CourseResource {
 	// to retrieve the details of courses based on search query
 	@GetMapping("/search/courses")
 	public List<CourseDetails> getCourseDetailsBySearchQuery(@RequestParam Optional<String> keyword) {
+		System.out.println(keyword);
 		return courseRepo.findByCourseDescription(keyword.orElse("_"));
 	}
 	

@@ -9,7 +9,7 @@ export class CourseDataService {
 
   constructor(private http: HttpClient) { }
 
-  createNewCourse(courseTitle: string, courseDescription: string, skillsAcquired: string) {
+  createNewCourse(courseTitle: string, courseDescription: string, skillsAcquired: string, githubRepoLink: string) {
     let date = new Date().toISOString().slice(0,10);
 
     return this.http.post<any>(`${API_URL}/add-new-course`, {
@@ -17,6 +17,7 @@ export class CourseDataService {
       courseDescription,
       creatorId: sessionStorage.getItem(AUTHENTICATED_USER),
       skillsAcquired,
+      githubRepoLink,
       isCourseActive: true,
       courseCreationDate: date,
       lastUpdated: date,
@@ -43,7 +44,7 @@ export class CourseDataService {
     return this.http.delete(`${API_URL}/delete/courses/${courseId}`);
   }
 
-  updateCourseDetails(course: any, courseTitle: string, courseDescription: string, skillsAcquired: string) {
+  updateCourseDetails(course: any, courseTitle: string, courseDescription: string, skillsAcquired: string, githubRepoLink: string) {
     let date = new Date().toISOString().slice(0,10);
 
     return this.http.put<any>(`${API_URL}/update/courses/${course.courseId}`, {
@@ -52,6 +53,7 @@ export class CourseDataService {
       courseDescription,
       creatorId: course.creatorId,
       skillsAcquired,
+      githubRepoLink,
       isCourseActive: course.isCourseActive,
       courseCreationDate: course.courseCreationDate,
       lastUpdated: date,
@@ -67,6 +69,7 @@ export class CourseDataService {
       courseDescription: course.courseDescription,
       creatorId: course.creatorId,
       skillsAcquired: course.skillsAcquired,
+      githubRepoLink: course.githubRepoLink,
       isCourseActive: !status,
       courseCreationDate: course.courseCreationDate,
       lastUpdated: date,

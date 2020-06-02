@@ -3,6 +3,12 @@ import { CourseDataService } from '../services/data/course-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AUTHENTICATED_USER } from '../app.constants';
+import * as isGithubUrl from 'is-github-url';
+
+function isValidGithubLink(input: FormControl) {
+  const result = isGithubUrl(`${input.value}`, { repository: true });
+  return result ? null : { invalidLink: true };
+}
 
 @Component({
   selector: 'app-update-course',
@@ -19,6 +25,9 @@ export class UpdateCourseComponent implements OnInit {
   authenticatedUser: string;
   success: boolean = false;
   failure: boolean = false;
+
+  // github link validation
+  githubRepoLink = new FormControl('', [Validators.required, isValidGithubLink]);
 
   constructor(private courseService: CourseDataService, 
     private route: ActivatedRoute,
@@ -37,7 +46,8 @@ export class UpdateCourseComponent implements OnInit {
     this.updateForm = this.fb.group({
       'courseTitle': new FormControl('', Validators.required),
       'courseDescription': new FormControl('', Validators.required),
-      'skillsAcquired': new FormControl('', Validators.required)
+      'skillsAcquired': new FormControl('', Validators.required),
+      'githubRepoLink': this.githubRepoLink
     });
   }
 
@@ -49,6 +59,7 @@ export class UpdateCourseComponent implements OnInit {
         this.updateForm.get('courseTitle').setValue(this.course.courseTitle);
         this.updateForm.get('courseDescription').setValue(this.course.courseDescription);
         this.updateForm.get('skillsAcquired').setValue(this.course.skillsAcquired);
+        this.updateForm.get('githubRepoLink').setValue(this.course.githubRepoLink);
         this.getUserData();
       }
     );
@@ -66,8 +77,9 @@ export class UpdateCourseComponent implements OnInit {
     let courseTitle = this.updateForm.get('courseTitle').value;
     let courseDescription = this.updateForm.get('courseDescription').value;
     let skillsAcquired = this.updateForm.get('skillsAcquired').value;
+    let githubRepoLink = this.updateForm.get('githubRepoLink').value;
 
-    this.courseService.updateCourseDetails(this.course, courseTitle, courseDescription, skillsAcquired)
+    this.courseService.updateCourseDetails(this.course, courseTitle, courseDescription, skillsAcquired, githubRepoLink)
       .subscribe(
         data => {
           this.success = true;

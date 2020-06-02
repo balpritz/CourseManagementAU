@@ -4,6 +4,9 @@
         <i aria-hidden="true" class="book icon"></i>
         <div class="content" *ngIf="courseData">
           {{courseData.courseTitle}}
+          <a href="{{courseData.githubRepoLink}}" style="color: black;">
+          &nbsp;<i aria-hidden="true" class="github icon" *ngIf="courseData"></i>
+          </a>
           <div class="sub header" *ngIf="userData">
             Created by {{userData.firstName}} {{userData.lastName}}
             <a href="mailto:{{userData.email}}" style="color: black;">

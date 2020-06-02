@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CourseDataService } from '../services/data/course-data.service';
 import { Router } from '@angular/router';
+import * as isGithubUrl from 'is-github-url';
+
+function isValidGithubLink(input: FormControl) {
+  const result = isGithubUrl(`${input.value}`, { repository: true });
+  return result ? null : { invalidLink: true };
+}
 
 @Component({
   selector: 'app-new-course',
@@ -17,6 +23,9 @@ export class NewCourseComponent implements OnInit {
   success: boolean = false;
   failure: boolean = false;
 
+  // github link validation
+  githubRepoLink = new FormControl('', [Validators.required, isValidGithubLink]);
+
   constructor(private fb: FormBuilder, 
     private courseService: CourseDataService,
     private router: Router) { }
@@ -25,7 +34,8 @@ export class NewCourseComponent implements OnInit {
     this.newCourseForm = this.fb.group({
       'courseTitle': new FormControl('', Validators.required),
       'courseDescription': new FormControl('', Validators.required),
-      'skillsAcquired': new FormControl('', Validators.required)
+      'skillsAcquired': new FormControl('', Validators.required),
+      'githubRepoLink': this.githubRepoLink
     });
   }
 
@@ -35,8 +45,9 @@ export class NewCourseComponent implements OnInit {
     this.courseTitle = this.newCourseForm.get('courseTitle').value;
     this.courseDescription = this.newCourseForm.get('courseDescription').value;
     this.skillsAcquired = this.newCourseForm.get('skillsAcquired').value;
+    let githubLink: string = this.newCourseForm.get('githubRepoLink').value;
 
-    this.courseService.createNewCourse(this.courseTitle, this.courseDescription, this.skillsAcquired)
+    this.courseService.createNewCourse(this.courseTitle, this.courseDescription, this.skillsAcquired, githubLink)
       .subscribe(
         data => {
           this.success = true;

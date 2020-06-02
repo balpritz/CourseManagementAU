@@ -41,10 +41,21 @@
                 *ngIf="!updateForm.controls['skillsAcquired'].valid && updateForm.controls['skillsAcquired'].dirty"
                 aria-atomic="true">Specify skills acquired</div>
 
-            <textarea formControlName="skillsAcquired"
-                placeholder="Add a ';' (semi-colon) as a delimiter at the end of each skill specified excluding the last one" 
-                [rows]="1" pInputTextarea></textarea></div>
-            
+            <input formControlName="skillsAcquired"
+                placeholder="Add a ';' (semi-colon) as a delimiter at the end of each skill specified excluding the last one"
+                pInputText /></div>
+            <!--End of the third field-->
+            <div class="required field">
+                <label>Github Repository Link</label>
+                <!--error message in case of empty field-->
+                <div class="ui pointing below prompt label"
+                    role="alert"
+                    *ngIf="!updateForm.controls['githubRepoLink'].valid && updateForm.controls['githubRepoLink'].dirty"
+                    aria-atomic="true">Invalid github repository link</div>
+    
+                <input formControlName="githubRepoLink" 
+                    placeholder="Link to github repository to share training material"
+                    pInputText /></div>
             <!--Success Message-->
             <div class="ui positive message" *ngIf="success">
                 <div class="header">The course was updated successfully!!!</div>
