@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseDataService } from '../services/data/course-data.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-courses',
@@ -12,7 +11,7 @@ export class ViewCoursesComponent implements OnInit {
   courseList: any;
   users: any;
 
-  constructor(private courseService: CourseDataService, private router: Router) { }
+  constructor(private courseService: CourseDataService) { }
 
   ngOnInit(): void {
     this.getUsersData();

@@ -1,0 +1,56 @@
+<app-header-nav></app-header-nav>
+<section style="margin-left: 20px; margin-right:20px" >
+    <h3 class="ui header">
+        <i aria-hidden="true" class="search icon"></i>
+        <div class="content">
+          Search Results
+        <div class="sub header">List of all available courses matching your search query: <span style="font-weight: bold;">{{query}}</span></div>
+        </div>
+    </h3>
+    <div>
+        <table class="ui celled table">
+            <thead class="ui celled inverted blue table">
+              <tr class="">
+                <th class="">Course ID</th>
+                <th class="">Course Title</th>
+                <th class="">Instructor's Name</th>
+                <th class="">Instructor's Email</th>
+                <th class="">Last Updated</th>
+                <th class="">Course Status</th>
+                <th class="">Course Main Page</th>
+              </tr>
+            </thead>
+            <tbody class="">
+              <tr class="" *ngFor="let course of courseList">
+                <td class="">{{course.courseId}}</td>
+                <td class="">{{course.courseTitle}}</td>
+                <ng-container *ngFor="let user of users">
+                  <td class="" *ngIf="course.creatorId == user.id">
+                    {{user.firstName}} {{user.lastName}}
+                  </td>
+                  <td class="" *ngIf="course.creatorId == user.id">
+                    {{user.email}}
+                  </td>
+                </ng-container>
+                <td class="">{{course.lastUpdated}}</td>
+                <td class="" *ngIf="course.isCourseActive">
+                  <span style="color:greenyellow; font-weight: bold;">ACTIVE</span>
+                </td>
+                <td class="" *ngIf="!course.isCourseActive">
+                  <span style="color:red; font-weight: bold;">INACTIVE</span>
+                </td>
+                <td class="">
+                    <button class="ui basic blue animated button" routerLink="/view-courses/{{course.courseId}}">
+                        <div class="visible content">View</div>
+                        <div class="hidden content"><i aria-hidden="true" class="arrow right icon"></i></div>
+                    </button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        <div>
+            <p *ngIf="courseList">Found {{courseList.length}} result(s).</p>
+        </div>
+    </div>
+</section>
+

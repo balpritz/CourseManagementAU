@@ -30,13 +30,6 @@ public class CourseResource {
 		return courseRepo.findById(id);
 	}
 	
-	// to retrieve the details of courses based on search query
-	@GetMapping("/search/courses")
-	public List<CourseDetails> getCourseDetailsBySearchQuery(@RequestParam Optional<String> keyword) {
-		System.out.println(keyword);
-		return courseRepo.findByCourseDescription(keyword.orElse("_"));
-	}
-	
 	// to add a new course
 	@PostMapping("/add-new-course")
 	public ResponseEntity<String> addNewCourse(@RequestBody CourseDetails newCourse) {

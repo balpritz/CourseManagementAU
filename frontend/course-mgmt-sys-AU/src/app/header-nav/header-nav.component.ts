@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AUTHENTICATED_USER, PASSWORD } from '../app.constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-nav',
@@ -8,7 +9,9 @@ import { AUTHENTICATED_USER, PASSWORD } from '../app.constants';
 })
 export class HeaderNavComponent implements OnInit {
 
-  constructor() {}
+  searchString: string = '';
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -17,4 +20,9 @@ export class HeaderNavComponent implements OnInit {
     sessionStorage.removeItem(AUTHENTICATED_USER);
     sessionStorage.removeItem(PASSWORD);
   }
+
+  handleSearch() {
+    this.router.navigate(['/search-results'], { queryParams: { query: this.searchString } });
+  }
+
 }

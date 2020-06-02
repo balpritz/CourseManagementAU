@@ -72,4 +72,8 @@ export class CourseDataService {
       lastUpdated: date,
     });
   }
+
+  getSearchResults(query: string) {
+    return this.http.get<any>(`${API_URL}/search/courses?keyword=${query}`);
+  }
 }
