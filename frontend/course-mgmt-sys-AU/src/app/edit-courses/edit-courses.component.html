@@ -17,27 +17,37 @@
                 <th class="">Last Updated</th>
                 <th class="">Course Status</th>
                 <th class="">Update Course Details</th>
+                <th class="">Toggle Course Status</th>
                 <th class="">Delete Course</th>
               </tr>
             </thead>
             <tbody class="">
                 <tr class="" *ngFor="let course of courseList">
-                    <td class="" *ngIf="course.creatorId == user.id">{{course.courseId}}</td>
-                    <td class="" *ngIf="course.creatorId == user.id">{{course.courseTitle}}</td>
-                    <td class="" *ngIf="course.creatorId == user.id">{{course.lastUpdated}}</td>
-                    <td class="" *ngIf="course.creatorId == user.id && course.isCourseActive">
+                    <td class="" *ngIf="user && course.creatorId == user.id">{{course.courseId}}</td>
+                    <td class="" *ngIf="user && course.creatorId == user.id">{{course.courseTitle}}</td>
+                    <td class="" *ngIf="user && course.creatorId == user.id">{{course.lastUpdated}}</td>
+                    <td class="" *ngIf="user && course.creatorId == user.id && course.isCourseActive">
                         <span style="color:greenyellow; font-weight: bold;">ACTIVE</span>
                     </td>
-                    <td class="" *ngIf="course.creatorId == user.id && !course.isCourseActive">
+                    <td class="" *ngIf="user && course.creatorId == user.id && !course.isCourseActive">
                         <span style="color:red; font-weight: bold;">INACTIVE</span>
                     </td>
-                    <td class="" *ngIf="course.creatorId == user.id">
-                        <button class="ui basic blue animated button">
+                    <td class="" *ngIf="user && course.creatorId == user.id">
+                        <button class="ui basic blue animated button" routerLink="/edit-courses/update/{{course.courseId}}" >
                             <div class="visible content">Update</div>
                             <div class="hidden content"><i aria-hidden="true" class="pencil icon"></i></div>
                         </button>
                     </td>
-                    <td class="" *ngIf="course.creatorId == user.id">
+                    <td class="" *ngIf="user && course.creatorId == user.id">
+                        <button class="ui basic teal animated button" (click)="handleStatusUpdate(course.courseId, course.isCourseActive)">
+                            <div class="visible content">Toggle</div>
+                            <div class="hidden content" *ngIf="user && course.creatorId == user.id && course.isCourseActive">
+                                <i aria-hidden="true" class="toggle on large icon" style="text-align: center; line-height: 75%;"></i></div>
+                            <div class="hidden content" *ngIf="user && course.creatorId == user.id && !course.isCourseActive">
+                                <i aria-hidden="true" class="toggle off large icon" style="text-align: center; line-height: 75%;"></i></div>
+                        </button>
+                    </td>
+                    <td class="" *ngIf="user && course.creatorId == user.id">
                         <button class="ui basic red animated button" (click)="handleCourseDeletion(course.courseId)">
                             <div class="visible content">Delete</div>
                             <div class="hidden content"><i aria-hidden="true" class="delete icon"></i></div>
@@ -46,10 +56,15 @@
                 </tr>
             </tbody>
         </table>
-        <!--Success Message-->
-        <div class="ui positive message" *ngIf="success">
+        <!--Success Message for Deletion-->
+        <div class="ui positive message" *ngIf="successDel">
             <div class="header">Course Deleted Successfully!!!</div>
             <p>The course is no longer part of the Accolite University training curriculum. Refreshing ...</p>
+        </div>
+        <!--Success Message for status update-->
+        <div class="ui positive message" *ngIf="successStatus">
+            <div class="header">Course Status Updated Successfully!!!</div>
+            <p>Refreshing ...</p>
         </div>
     </div>
 </section>

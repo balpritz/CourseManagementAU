@@ -30,8 +30,5 @@ export class ViewCoursesComponent implements OnInit {
       data => this.users = data
     );
   }
-
-  viewCourseMainPage(courseId: number, creatorId: string) {
-    this.router.navigate([`view-courses/${courseId}`], {state: {data: { creatorId }}});
-  }
+  
 }

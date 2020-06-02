@@ -9,6 +9,7 @@ import { RouteGuardService } from './services/route-guard.service';
 import { SessionRouteGuardService } from './services/session-route-guard.service';
 import { CourseMainpageComponent } from './course-mainpage/course-mainpage.component';
 import { EditCoursesComponent } from './edit-courses/edit-courses.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'view-courses', component: ViewCoursesComponent, canActivate: [RouteGuardService] },
   { path: 'view-courses/:id', component: CourseMainpageComponent, canActivate: [RouteGuardService] },
   { path: 'edit-courses', component: EditCoursesComponent, canActivate: [RouteGuardService] },
+  { path: 'edit-courses/update/:id', component: UpdateCourseComponent, canActivate: [RouteGuardService] },
   { path: '**', component: ErrorComponent },
 ];
 

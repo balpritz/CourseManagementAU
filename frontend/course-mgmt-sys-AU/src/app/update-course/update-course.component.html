@@ -1,1 +1,78 @@
-<p>update-course works!</p>
+<app-header-nav></app-header-nav>
+<section style="margin-left: 20px; margin-right:20px" *ngIf="authenticatedUser == creatorId; else elseBlock" >
+    <h3 class="ui header">
+        <i aria-hidden="true" class="redo alternate icon"></i>
+        <div class="content">
+          Update Course Details
+          <div class="sub header" *ngIf="course">{{course.courseTitle}}&emsp;Last updated {{course.lastUpdated}}</div>
+        </div>
+    </h3>
+    <div>
+        <form class="ui form" [formGroup]="updateForm" (ngSubmit)="handleCourseUpdation()" >
+            <div class="required field">
+            <label>Course Title</label>
+            <!--error message in case of empty field-->
+            <div class="ui pointing below prompt label"
+                role="alert"
+                *ngIf="!updateForm.controls['courseTitle'].valid && updateForm.controls['courseTitle'].dirty"
+                aria-atomic="true">Course title is required</div>
+
+            <input formControlName="courseTitle" 
+                placeholder="Title of the course"
+                pInputText /></div>
+            <!--End of the first field-->
+            <div class="required field">
+            <label>Course Description</label>
+            <!--error message in case of empty field-->
+            <div class="ui pointing below prompt label"
+                role="alert"
+                *ngIf="!updateForm.controls['courseDescription'].valid && updateForm.controls['courseDescription'].dirty"
+                aria-atomic="true">Course description is required</div>
+                
+            <textarea formControlName="courseDescription"
+                placeholder="Provide a brief description of the course along with appropriate pre-requisites" 
+                [rows]="8" pInputTextarea></textarea></div>
+            <!--End of the second field-->
+            <div class=" required field">
+            <label>Skills acquired post completion of course</label>
+            <!--error message in case of empty field-->
+            <div class="ui pointing below prompt label"
+                role="alert"
+                *ngIf="!updateForm.controls['skillsAcquired'].valid && updateForm.controls['skillsAcquired'].dirty"
+                aria-atomic="true">Specify skills acquired</div>
+
+            <textarea formControlName="skillsAcquired"
+                placeholder="Add a ';' (semi-colon) as a delimiter at the end of each skill specified excluding the last one" 
+                [rows]="1" pInputTextarea></textarea></div>
+            
+            <!--Success Message-->
+            <div class="ui positive message" *ngIf="success">
+                <div class="header">The course was updated successfully!!!</div>
+                <p>Redirecting to Home page...</p>
+            </div>
+
+            <!--Error Message-->
+            <div class="ui negative message" *ngIf="failure">
+                <div class="header">Error: Unable to update course!!!</div>
+                <p>Something unexpected happened</p>
+            </div>
+
+            <button type="submit" class="ui primary button" [disabled]="!updateForm.valid" >Update</button>
+        </form>
+    </div>
+</section>
+<ng-template #elseBlock>
+    <section style="margin-left: 20px; margin-right:20px">
+        <h3 class="ui header">
+            <i aria-hidden="true" class="dont icon" style="color: crimson;"></i>
+            <div class="content">
+                <span style="color:crimson; font-weight: bold;">NOT FOUND</span>
+                <div class="sub header" >
+                  <span style="color:crimson;">
+                    The course content you're looking for was not found
+                    </span>
+                </div>
+            </div>
+        </h3>
+    </section>
+</ng-template>

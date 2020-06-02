@@ -12,9 +12,11 @@ export class EditCoursesComponent implements OnInit {
 
   courseList: any;
   user: any;
-  success: boolean = false;
+  successDel: boolean = false;
+  successStatus: boolean = false;
+  toggle: string;
 
-  constructor(private courseService: CourseDataService) { }
+  constructor(private courseService: CourseDataService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUserData();
@@ -28,21 +30,39 @@ export class EditCoursesComponent implements OnInit {
   }
 
   getAllCourseData(){
-    this.success = false;
+    this.successDel = false;
+    this.successStatus = false;
     this.courseService.getAllCourseDetails().subscribe(
       data => this.courseList = data
     );
   }
 
   handleCourseDeletion(courseId: number) {
-    this.success = false;
+    this.successDel = false;
     this.courseService.deleteCourse(courseId).subscribe(
       data => {
-        this.success = true;
+        this.successDel = true;
         setTimeout(() => {
           this.getAllCourseData();
         },
         3000);
+      }
+    );
+  }
+
+  handleStatusUpdate(courseId: number, courseStatus: boolean) {
+    this.successStatus = false;
+
+    this.courseService.getCourseDetails(courseId).subscribe(
+      data => {
+        this.courseService.updateCourseStatus(data, courseStatus).subscribe(
+        response => {
+          this.successStatus = true;
+          setTimeout(() => {
+            this.getAllCourseData();
+          },
+          3000);
+        });
       }
     );
   }

@@ -10,7 +10,6 @@ export class CourseDataService {
   constructor(private http: HttpClient) { }
 
   createNewCourse(courseTitle: string, courseDescription: string, skillsAcquired: string) {
-    
     let date = new Date().toISOString().slice(0,10);
 
     return this.http.post<any>(`${API_URL}/add-new-course`, {
@@ -42,5 +41,35 @@ export class CourseDataService {
 
   deleteCourse(courseId: number) {
     return this.http.delete(`${API_URL}/delete/courses/${courseId}`);
+  }
+
+  updateCourseDetails(course: any, courseTitle: string, courseDescription: string, skillsAcquired: string) {
+    let date = new Date().toISOString().slice(0,10);
+
+    return this.http.put<any>(`${API_URL}/update/courses/${course.courseId}`, {
+      courseId: course.courseId,
+      courseTitle,
+      courseDescription,
+      creatorId: course.creatorId,
+      skillsAcquired,
+      isCourseActive: course.isCourseActive,
+      courseCreationDate: course.courseCreationDate,
+      lastUpdated: date,
+    });
+  }
+
+  updateCourseStatus(course: any, status: boolean) {
+    let date = new Date().toISOString().slice(0,10);
+
+    return this.http.put<any>(`${API_URL}/update/courses/${course.courseId}`, {
+      courseId: course.courseId,
+      courseTitle: course.courseTitle,
+      courseDescription: course.courseDescription,
+      creatorId: course.creatorId,
+      skillsAcquired: course.skillsAcquired,
+      isCourseActive: !status,
+      courseCreationDate: course.courseCreationDate,
+      lastUpdated: date,
+    });
   }
 }

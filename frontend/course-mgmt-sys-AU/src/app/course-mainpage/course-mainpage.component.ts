@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseDataService } from '../services/data/course-data.service';
 import { ActivatedRoute } from '@angular/router';
-import { CREATOR_ID } from '../app.constants';
 
 @Component({
   selector: 'app-course-mainpage',
@@ -20,16 +19,10 @@ export class CourseMainpageComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseId = Number(this.route.snapshot.paramMap.get("id"));
-    if(history.state.data) {
-      this.creatorId = history.state.data.creatorId;
-      sessionStorage.setItem(CREATOR_ID, history.state.data.creatorId);
-    } else {
-      this.creatorId = sessionStorage.getItem(CREATOR_ID);
-    }
     
     // get course and instructor data
-    this.getUserData();
     this.getCourseData();
+    this.getUserData();
   }
 
   getCourseData(){
@@ -37,6 +30,8 @@ export class CourseMainpageComponent implements OnInit {
       data => {
         this.courseData = data;
         this.skills = this.courseData.skillsAcquired.split(';');
+        this.creatorId = this.courseData.creatorId;
+        this.getUserData();
       }
     );
   }

@@ -60,7 +60,7 @@ public class CourseResource {
 	// to update the details of a course
 	@PutMapping("/update/courses/{id}")
 	public ResponseEntity<Void> updateCourseDetails(@RequestBody CourseDetails course, @PathVariable int id) {
-		courseRepo.saveAndFlush(course);
+		
 		return ResponseEntity.noContent().build();
 	}
 	
