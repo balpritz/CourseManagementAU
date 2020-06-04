@@ -4,9 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RatingModule } from 'primeng/rating';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { getAuthServiceConfigs } from './socialloginConfig';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,6 +47,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     SocialLoginModule,
     HttpClientModule,
     RatingModule,
+    NgxChartsModule,
+    BrowserAnimationsModule,
   ],
   providers: [ {
     provide: AuthServiceConfig,

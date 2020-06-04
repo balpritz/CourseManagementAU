@@ -45,7 +45,7 @@ export class CourseMainpageComponent implements OnInit {
     this.getEnrollementStatus();
 
     // get feedback data
-    this.getEnrollmentData();
+    this.getCourseEnrollmentData();
   }
 
   getCourseData(){
@@ -82,8 +82,8 @@ export class CourseMainpageComponent implements OnInit {
     );
   }
 
-  getEnrollmentData() {
-    this.courseService.retrieveEnrollmentData(this.courseId).subscribe(
+  getCourseEnrollmentData() {
+    this.courseService.retrieveCourseEnrollementData(this.courseId).subscribe(
       data => {
         this.enrollmentData = data;
         this.enrolledTraineeCount = data.length;
@@ -98,7 +98,7 @@ export class CourseMainpageComponent implements OnInit {
 
     this.courseService.provideFeedback(this.loggedInUserId, this.courseId, data, rating).subscribe(
       response => {
-        this.getEnrollmentData();
+        this.getCourseEnrollmentData();
       }
     );
   }

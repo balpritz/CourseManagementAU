@@ -94,8 +94,12 @@ export class CourseDataService {
     });
   }
 
-  retrieveEnrollmentData(courseId: number) {
+  retrieveCourseEnrollementData(courseId: number) {
     return this.http.get<any>(`${API_URL}/get/enrollment-data/courses/${courseId}`);
+  }
+
+  retrieveUserEnrollmentData(userId: string) {
+    return this.http.get<any>(`${API_URL}/get/enrollment-data/users/${userId}`);
   }
 
   provideFeedback(userId: string, courseId: number, data: string, rating: number) {

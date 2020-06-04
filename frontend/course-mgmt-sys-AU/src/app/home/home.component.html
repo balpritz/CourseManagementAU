@@ -1,10 +1,50 @@
 <app-header-nav></app-header-nav>
 <section style="margin-left: 20px; margin-right:20px" *ngIf="userData">
-    <h3 class="ui header">
-        <i aria-hidden="true" class="user secret icon"></i>
-        <div class="content">
-          Welcome {{userData.firstName}}!!
-          <div><h4 class="ui header">{{welcomeMessage}}</h4></div>
+  <h3 class="ui header">
+      <i aria-hidden="true" class="user secret icon"></i>
+      <div class="content">
+        Welcome {{userData.firstName}}!!
+        <div><h4 class="ui header">{{welcomeMessage}}</h4></div>
+      </div>
+  </h3>
+  <div class="ui horizontal divider">
+    <h4 class="ui header">
+      <i aria-hidden="true" class="pie chart icon"></i>
+      Platform Statistics
+    </h4>
+  </div>
+  <!-- user stats -->
+  <section class="ui placeholder segment">
+    <div class="ui stackable very relaxed two column grid">
+      <div class="column">
+        <h4 class="ui header" style="text-align: center;">Global Statistics</h4>
+        <div style="margin-left: 100px;">
+          <!-- pie chart global stats-->
+          <ngx-charts-advanced-pie-chart
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="courseStats"
+            [gradient]="gradient"
+            style="line-height: 30px;"
+            *ngIf="courseStats[0].value != -1"
+            >
+          </ngx-charts-advanced-pie-chart>
         </div>
-    </h3>
+      </div>
+        <div class="ui column">
+          <h4 class="ui header" style="text-align: center;">User Statistics</h4>
+          <div class="ui large two statistics" style="margin-top: 60px">
+            <div class="ui statistic">
+              <div class="value" style="color: #1767b1;">{{courseCreated}}</div>
+              <div class="label">Courses Created</div>
+            </div>
+            <div class="ui statistic">
+              <div class="value" style="color: #1767b1;">{{enrollmentCount}}</div>
+              <div class="label">Courses Enrolled In</div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="ui vertical divider">And</div>
+  </section>
 </section>

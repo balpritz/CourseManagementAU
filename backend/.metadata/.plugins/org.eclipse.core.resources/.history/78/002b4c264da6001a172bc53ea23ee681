@@ -39,12 +39,6 @@ public class CourseFeedbackResource {
 		return feedbackRepo.findByCourseId(courseId);
 	}
 	
-	// get user enrollment data
-	@GetMapping("/get/enrollment-data/users/{userId}")
-	public List<CourseFeedback> getEnrollmentDataByUserId(@PathVariable String userId) {
-		return feedbackRepo.findByUserId(userId);
-	}
-	
 	// get enrollment status for a user
 	@PostMapping("/get/enrollment-status")
 	public Boolean getEnrollmentStatus(@RequestBody CourseFeedbackKey key) {

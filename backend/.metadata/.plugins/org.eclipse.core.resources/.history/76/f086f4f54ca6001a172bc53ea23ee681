@@ -12,7 +12,4 @@ public interface CourseFeedbackRepository extends JpaRepository<CourseFeedback, 
 	
 	@Query("select f from CourseFeedback f where course_id = ?1")
 	List<CourseFeedback> findByCourseId(int courseId);
-	
-	@Query("select f from CourseFeedback f where user_id = ?1")
-	List<CourseFeedback> findByUserId(String userId);
 }
