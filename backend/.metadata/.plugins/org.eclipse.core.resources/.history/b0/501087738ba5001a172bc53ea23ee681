@@ -1,0 +1,10 @@
+package repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import model.CourseFeedback;
+import model.CourseFeedbackKey;
+
+public interface CourseFeedbackRepository extends JpaRepository<CourseFeedback, CourseFeedbackKey> {
+
+}

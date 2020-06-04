@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { RatingModule } from 'primeng/rating';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { getAuthServiceConfigs } from './socialloginConfig';
 import { HttpClientModule } from '@angular/common/http';
@@ -43,6 +44,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     ReactiveFormsModule,
     SocialLoginModule,
     HttpClientModule,
+    RatingModule,
   ],
   providers: [ {
     provide: AuthServiceConfig,

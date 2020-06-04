@@ -1,20 +1,29 @@
 <app-header-nav></app-header-nav>
 <section style="margin-left: 20px; margin-right:20px" >
     <h3 class="ui header">
-        <i aria-hidden="true" class="book icon"></i>
-        <div class="content" *ngIf="courseData">
-          {{courseData.courseTitle}}
-          <a href="{{courseData.githubRepoLink}}" style="color: black;">
-          &nbsp;<i aria-hidden="true" class="github icon" *ngIf="courseData"></i>
+      <ng-container *ngIf="creatorId && loggedInUserId != creatorId">
+        <button class="ui basic blue animated button" style="float: right;" *ngIf="!isEnrolled" (click)="enrollUser()">
+          <div class="visible content">Enroll now</div>
+          <div class="hidden content"><i aria-hidden="true" class="user plus large icon" style="text-align: center; line-height: 75%;"></i></div>
+        </button>
+        <button class="ui primary button" style="float: right;" *ngIf="isEnrolled">Enrolled</button>
+      </ng-container>
+      <i aria-hidden="true" class="book icon"></i>
+      <div class="content" *ngIf="courseData">
+        {{courseData.courseTitle}}
+        <a href="{{courseData.githubRepoLink}}" target="_blank" style="color: black;">
+        &nbsp;<i aria-hidden="true" class="github icon" *ngIf="courseData"></i>
+        </a>
+        <div class="sub header" *ngIf="creatorData && enrollmentData">
+          Created by {{creatorData.firstName}} {{creatorData.lastName}}
+          <a href="mailto:{{creatorData.email}}" style="color: rgb(92, 87, 87);">
+          &nbsp;<i class="mail icon" *ngIf="creatorData"></i>
           </a>
-          <div class="sub header" *ngIf="userData">
-            Created by {{userData.firstName}} {{userData.lastName}}
-            <a href="mailto:{{userData.email}}" style="color: black;">
-            &nbsp;<i class="mail icon" *ngIf="userData"></i>
-            </a>
-            &emsp;Last updated {{courseData.lastUpdated}}
-          </div>
+          &emsp;Last updated {{courseData.lastUpdated}}&emsp;Average rating: {{averageCourseRating}}
+          <i aria-hidden="true" class="star icon"></i> ( {{feedbackCount}} rating(s) )&emsp;{{enrollmentData.length}}
+          <i aria-hidden="true" class="user icon"></i> Trainee(s) enrolled
         </div>
+      </div>
     </h3>
     <!-- Description -->
     <div class="ui horizontal divider">
@@ -41,4 +50,53 @@
         </div>
       </div>
     </section>
+    <!-- Feedback comments -->
+    <div class="ui horizontal divider">
+      <h4 class="ui header">
+        <i aria-hidden="true" class="comments icon"></i>
+        Feedback
+      </h4>
+    </div>
+    <div class="ui comments">
+      <ng-container *ngFor="let en of enrollmentData">
+      <div class="comment" *ngIf="en.feedback">
+        <i aria-hidden="true" class="user circle large icon avatar"></i>
+        <div class="content">
+          <div class="author">
+            {{en.user.firstName}} {{en.user.lastName}}
+            <ng-container *ngFor="let i of [].constructor(en.rating)">
+              <i aria-hidden="true" class="star icon"></i>
+            </ng-container>
+          </div>
+          <div class="metadata"><div>Posted on: {{en.feedbackDate}}</div></div>
+          <div class="text"><p>{{en.feedback}}</p></div>
+        </div>
+      </div>
+      </ng-container>
+    </div>
+    <!-- Add feedback section -->
+    <ng-container *ngIf="creatorId && loggedInUserId != creatorId">
+    <form class="ui form" [formGroup]="feedbackForm" (ngSubmit)="handlefeedbackSubmission()" *ngIf="!feedbackStatus" >
+      <div class="required field">
+        <!--error message in case of empty field-->
+        <div class="ui pointing below prompt label"
+            role="alert"
+            *ngIf="!feedbackForm.controls['fbdata'].valid && feedbackForm.controls['fbdata'].dirty"
+            aria-atomic="true">Empty feedback cannot be submitted</div>
+            
+          <textarea formControlName="fbdata"
+              placeholder="Enroll in the course to provide feedback" 
+              [rows]="3" 
+              [readonly]="!isEnrolled" pInputTextArea></textarea>
+      </div>
+      <div class="required field">
+        <label style="text-align: right; clear: both; float: left; margin-right: 15px; font-size: 15px;">Please provide a rating:</label>
+        <p-rating formControlName="rating" [readonly]="!isEnrolled" [cancel]="false"></p-rating>
+      </div>
+      <button class="ui icon primary left labeled button" [disabled]="!feedbackForm.valid" type="submit">
+        <i aria-hidden="true" class="edit icon"></i>
+        Provide Feedback
+      </button>
+    </form>
+    </ng-container>
 </section>

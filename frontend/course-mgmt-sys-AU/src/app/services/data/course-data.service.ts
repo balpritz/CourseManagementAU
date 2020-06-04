@@ -79,4 +79,29 @@ export class CourseDataService {
   getSearchResults(query: string) {
     return this.http.get<any>(`${API_URL}/search/courses?keyword=${query}`);
   }
+
+  retrieveEnrollmentStatus(userId: string, courseId: number) {
+    return this.http.post<any>(`${API_URL}/get/enrollment-status`, {
+      userId,
+      courseId
+    });
+  }
+
+  enrollUserForACourse(userId: string, courseId: number) {
+    return this.http.put<any>(`${API_URL}/enroll/user`, {
+      userId,
+      courseId
+    });
+  }
+
+  retrieveEnrollmentData(courseId: number) {
+    return this.http.get<any>(`${API_URL}/get/enrollment-data/courses/${courseId}`);
+  }
+
+  provideFeedback(userId: string, courseId: number, data: string, rating: number) {
+    return this.http.put<any>(`${API_URL}/add/feedback?data=${data}&rating=${rating}`, {
+      userId,
+      courseId
+    });
+  }
 }

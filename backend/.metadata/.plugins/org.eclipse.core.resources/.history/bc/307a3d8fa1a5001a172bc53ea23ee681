@@ -1,0 +1,74 @@
+package resource;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import model.CourseDetails;
+import model.CourseFeedback;
+import model.CourseFeedbackKey;
+import model.UserDetails;
+
+import org.springframework.web.bind.annotation.*;
+
+import repository.CourseFeedbackRepository;
+import repository.CourseRepository;
+import repository.UserRepository;
+
+@CrossOrigin(origins="http://localhost:4200")
+@RestController
+public class CourseFeedbackResource {
+	
+	@Autowired
+	private CourseFeedbackRepository feedbackRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+	private CourseRepository courseRepo;
+	
+	@GetMapping("/get/feedback/courses/{courseId}")
+	public List<CourseFeedback> getFeedbackByCourseId(@PathVariable int courseId) {
+		return feedbackRepo.findByCourseId(courseId);
+	}
+	
+	@PostMapping("/get/enrollment-status")
+	public Boolean getEnrollmentStatus(@RequestBody CourseFeedbackKey key) {
+		Optional<CourseFeedback> dbFeedback = feedbackRepo.findById(key);
+		
+		if(dbFeedback.isPresent()) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@PutMapping("/enroll/user")
+	public ResponseEntity<Void> enrollUserToACourse(@RequestBody CourseFeedbackKey key) {
+		Optional<UserDetails> dbUser = userRepo.findById(key.getUserId());
+		Optional<CourseDetails> dbCourse = courseRepo.findById(key.getCourseId());
+		
+		CourseFeedback newEntry = new CourseFeedback(key, dbUser.get(), dbCourse.get(), null, 0, true, null);
+		
+		feedbackRepo.saveAndFlush(newEntry);
+
+		return ResponseEntity.noContent().build();
+	}
+	
+	@PutMapping("/add/feedback")
+	public ResponseEntity<Void> addFeedback(@RequestParam String data, @RequestParam int rating, @RequestBody CourseFeedbackKey key) {
+		Optional<UserDetails> dbUser = userRepo.findById(key.getUserId());
+		Optional<CourseDetails> dbCourse = courseRepo.findById(key.getCourseId());
+		
+		CourseFeedback newEntry = new CourseFeedback(key, dbUser.get(), dbCourse.get(), data, rating, true, LocalDateTime.now());
+		
+		feedbackRepo.saveAndFlush(newEntry);
+		return ResponseEntity.noContent().build();
+	}
+	
+}

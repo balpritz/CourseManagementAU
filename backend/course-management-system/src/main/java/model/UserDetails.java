@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -17,6 +19,9 @@ public class UserDetails {
 	private String email;
 	private String password;
 	private String photoUrl;
+	
+	@OneToMany(mappedBy = "user")
+	Set<CourseFeedback> feedbacks;
 	
 	//----------------------GETTERS AND SETTERS-------------------------------
 	public String getId() {

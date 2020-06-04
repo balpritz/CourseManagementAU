@@ -5,52 +5,99 @@ import javax.persistence.*;
 @Entity
 public class CourseFeedback {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int feedbackId;
-	private String feedback;
-	private String courseId;
-	private String feedbackProviderId;
+	@EmbeddedId
+	private CourseFeedbackKey id;
+	
+	@ManyToOne
+	@MapsId("user_id")
+	@JoinColumn(name = "user_id")
+	UserDetails user;
+	
+	@ManyToOne
+	@MapsId("course_id")
+	@JoinColumn(name = "course_id")
+	CourseDetails course;
+ 
+    private String feedback;
+	private int rating;
+	private Boolean isEnrolled;
+	private String feedbackDate;
 	
 	//----------------------GETTERS AND SETTERS-------------------------------
-	public int getFeedbackId() {
-		return feedbackId;
+	public CourseFeedbackKey getId() {
+		return id;
 	}
-
-	public void setFeedbackId(int feedbackId) {
-		this.feedbackId = feedbackId;
+	
+	public void setId(CourseFeedbackKey id) {
+		this.id = id;
+	}
+	
+	public UserDetails getUser() {
+		return user;
+	}
+	
+	public void setUser(UserDetails user) {
+		this.user = user;
+	}
+	
+	public CourseDetails getCourse() {
+		return course;
+	}
+	
+	public void setCourse(CourseDetails course) {
+		this.course = course;
 	}
 	
 	public String getFeedback() {
 		return feedback;
 	}
-
+	
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
 	}
 	
-	public String getCourseId() {
-		return courseId;
+	public int getRating() {
+		return rating;
 	}
 	
-	public void setCourseId(String courseId) {
-		this.courseId = courseId;
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 	
-	public String getFeedbackProviderId() {
-		return feedbackProviderId;
+	public Boolean getIsEnrolled() {
+		return isEnrolled;
 	}
-	
-	public void setFeedbackProviderId(String feedbackProviderId) {
-		this.feedbackProviderId = feedbackProviderId;
+
+	public void setIsEnrolled(Boolean isEnrolled) {
+		this.isEnrolled = isEnrolled;
 	}
-	
+
+	public String getFeedbackDate() {
+		return feedbackDate;
+	}
+
+	public void setFeedbackDate(String feedbackDate) {
+		this.feedbackDate = feedbackDate;
+	}
+
 	@Override
 	public String toString() {
-		return "CourseFeedback [feedbackId=" + feedbackId + ", feedback=" + feedback + ", courseId=" + courseId
-				+ ", feedbackProviderId=" + feedbackProviderId + "]";
+		return "CourseFeedback [id=" + id + ", user=" + user + ", course=" + course + ", feedback=" + feedback
+				+ ", rating=" + rating + ", isEnrolled=" + isEnrolled + ", feedbackDate=" + feedbackDate + "]";
 	}
-	
+
+	public CourseFeedback(CourseFeedbackKey id, UserDetails user, CourseDetails course, String feedback, int rating,
+			Boolean isEnrolled, String feedbackDate) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.course = course;
+		this.feedback = feedback;
+		this.rating = rating;
+		this.isEnrolled = isEnrolled;
+		this.feedbackDate = feedbackDate;
+	}
+
 	public CourseFeedback() {}
 	
 }

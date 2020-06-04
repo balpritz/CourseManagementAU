@@ -40,7 +40,6 @@ export class UpdateCourseComponent implements OnInit {
 
     // get course and instructor data
     this.getCourseData();
-    this.getUserData();
 
     // form validations
     this.updateForm = this.fb.group({
@@ -54,6 +53,10 @@ export class UpdateCourseComponent implements OnInit {
   getCourseData() {
     this.courseService.getCourseDetails(this.courseId).subscribe(
       data => {
+        if(data == null) {
+          this.creatorId = 'NO_CONTENT';
+          return;
+        }
         this.course = data;
         this.creatorId = this.course.creatorId;
         this.updateForm.get('courseTitle').setValue(this.course.courseTitle);
