@@ -1,0 +1,37 @@
+<app-header-nav></app-header-nav>
+<ng-container *ngIf="creatorId">
+    <section style="margin-left: 20px; margin-right:20px" *ngIf="creatorId == loggedInUserId; else elseBlock">
+    <h3 class="ui header" *ngIf="enrollmentData">
+        <i aria-hidden="true" class="list ol icon"></i>
+        <div class="content">
+          Participants ({{enrollmentData.length}})
+        <div class="sub header">
+            List of all the participants enrolled for the course: <span style="font-weight: bold;">{{courseData.courseTitle}}</span></div>
+        </div>
+    </h3>
+    <!-- Participant list -->
+    <div role="list" class="ui animated middle aligned list" *ngIf="enrollmentData">
+        <div role="listitem" class="item" *ngFor="let en of enrollmentData">
+            <i aria-hidden="true" class="mail big icon avatar"></i>
+            <div class="content"><div class="header">
+                <a href="mailto:{{en.user.email}}" style="color: black;">{{en.user.firstName}} {{en.user.lastName}}</a>
+            </div></div>
+        </div>
+    </div>
+</section>
+</ng-container>
+<ng-template #elseBlock>
+    <section style="margin-left: 20px; margin-right:20px">
+        <h3 class="ui header">
+            <i aria-hidden="true" class="dont icon" style="color: crimson;"></i>
+            <div class="content">
+                <span style="color:crimson; font-weight: bold;">NOT FOUND</span>
+                <div class="sub header" >
+                  <span style="color:crimson;">
+                    The course content you're looking for was not found
+                    </span>
+                </div>
+            </div>
+        </h3>
+    </section>
+</ng-template>

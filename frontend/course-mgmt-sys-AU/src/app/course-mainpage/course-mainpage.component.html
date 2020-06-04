@@ -2,7 +2,7 @@
 <ng-container *ngIf="creatorId">
 <section style="margin-left: 20px; margin-right:20px" *ngIf="creatorId != 'NO_CONTENT'; else elseBlock" >
     <h3 class="ui header">
-      <ng-container *ngIf="creatorId && loggedInUserId != creatorId">
+      <ng-container *ngIf="creatorId && loggedInUserId != creatorId && courseData.isCourseActive">
         <button class="ui basic blue animated button" style="float: right;" *ngIf="!isEnrolled" (click)="enrollUser()">
           <div class="visible content">Enroll now</div>
           <div class="hidden content"><i aria-hidden="true" class="user plus large icon" style="text-align: center; line-height: 75%;"></i></div>
@@ -88,6 +88,7 @@
           <textarea formControlName="fbdata"
               placeholder="Enroll in the course to provide feedback" 
               [rows]="3" 
+              maxlength="255"
               [readonly]="!isEnrolled" pInputTextArea></textarea>
       </div>
       <div class="required field">

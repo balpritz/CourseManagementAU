@@ -20,6 +20,7 @@
 
             <input formControlName="courseTitle" 
                 placeholder="Title of the course"
+                maxlength="255"
                 pInputText /></div>
             <!--End of the first field-->
             <div class="required field">
@@ -32,6 +33,7 @@
                 
             <textarea formControlName="courseDescription"
                 placeholder="Provide a brief description of the course along with appropriate pre-requisites" 
+                maxlength="255"
                 [rows]="8" pInputTextarea></textarea></div>
             <!--End of the second field-->
             <div class=" required field">
@@ -44,6 +46,7 @@
 
             <input formControlName="skillsAcquired"
                 placeholder="Add a ';' (semi-colon) as a delimiter at the end of each skill specified excluding the last one"
+                maxlength="255"
                 pInputText /></div>
             <!--End of the third field-->
             <div class="required field">
@@ -56,6 +59,7 @@
     
                 <input formControlName="githubRepoLink" 
                     placeholder="Link to github repository to share training material"
+                    maxlength="255"
                     pInputText /></div>
             <!--Success Message-->
             <div class="ui positive message" *ngIf="success">

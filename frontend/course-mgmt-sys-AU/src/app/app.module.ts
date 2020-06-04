@@ -22,6 +22,7 @@ import { CourseMainpageComponent } from './course-mainpage/course-mainpage.compo
 import { EditCoursesComponent } from './edit-courses/edit-courses.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { ParticipantListComponent } from './participant-list/participant-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     CourseMainpageComponent,
     EditCoursesComponent,
     UpdateCourseComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    ParticipantListComponent
   ],
   imports: [
     BrowserModule,

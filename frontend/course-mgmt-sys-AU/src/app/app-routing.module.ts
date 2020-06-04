@@ -11,6 +11,7 @@ import { CourseMainpageComponent } from './course-mainpage/course-mainpage.compo
 import { EditCoursesComponent } from './edit-courses/edit-courses.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { ParticipantListComponent } from './participant-list/participant-list.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'view-courses/:id', component: CourseMainpageComponent, canActivate: [RouteGuardService] },
   { path: 'edit-courses', component: EditCoursesComponent, canActivate: [RouteGuardService] },
   { path: 'edit-courses/update/:id', component: UpdateCourseComponent, canActivate: [RouteGuardService] },
+  { path: 'courses/:id/participant-list', component: ParticipantListComponent, canActivate: [RouteGuardService] },
   { path: 'search-results', component: SearchResultsComponent, canActivate: [RouteGuardService] },
   { path: '**', component: ErrorComponent },
 ];
