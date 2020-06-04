@@ -15,6 +15,7 @@ export class ParticipantListComponent implements OnInit {
   enrollmentData: any;
   creatorId: string;
   loggedInUserId: string;
+  mailAll: string = '';
 
   constructor(private courseService: CourseDataService,
     private route: ActivatedRoute) { }
@@ -41,7 +42,13 @@ export class ParticipantListComponent implements OnInit {
 
   getCourseEnrollmentData() {
     this.courseService.retrieveCourseEnrollementData(this.courseId).subscribe(
-      data => this.enrollmentData = data
+      data => {
+        this.enrollmentData = data;
+
+        for(let i = 0; i < this.enrollmentData.length; i++) {
+          this.mailAll = this.mailAll.concat(this.enrollmentData[i].user.email, ',');
+        }
+      }
     );
   }
 

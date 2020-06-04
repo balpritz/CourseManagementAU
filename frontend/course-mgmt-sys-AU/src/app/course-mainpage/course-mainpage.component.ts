@@ -119,7 +119,7 @@ export class CourseMainpageComponent implements OnInit {
     }
 
     this.feedbackCount = count;
-    this.averageCourseRating = this.enrollmentData.length ? total / count : 0;
+    this.averageCourseRating = this.enrollmentData.length && count ? total / count : 0;
   }
 
 }
