@@ -1,5 +1,6 @@
 <app-header-nav></app-header-nav>
-<section style="margin-left: 20px; margin-right:20px" >
+<ng-container *ngIf="creatorId">
+<section style="margin-left: 20px; margin-right:20px" *ngIf="creatorId != 'NO_CONTENT'; else elseBlock" >
     <h3 class="ui header">
       <ng-container *ngIf="creatorId && loggedInUserId != creatorId">
         <button class="ui basic blue animated button" style="float: right;" *ngIf="!isEnrolled" (click)="enrollUser()">
@@ -100,3 +101,19 @@
     </form>
     </ng-container>
 </section>
+</ng-container>
+<ng-template #elseBlock>
+  <section style="margin-left: 20px; margin-right:20px">
+      <h3 class="ui header">
+          <i aria-hidden="true" class="dont icon" style="color: crimson;"></i>
+          <div class="content">
+              <span style="color:crimson; font-weight: bold;">NOT FOUND</span>
+              <div class="sub header" >
+                <span style="color:crimson;">
+                  The course content you're looking for was not found
+                  </span>
+              </div>
+          </div>
+      </h3>
+  </section>
+</ng-template>

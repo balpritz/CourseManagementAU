@@ -1,1 +1,10 @@
 <app-header-nav></app-header-nav>
+<section style="margin-left: 20px; margin-right:20px" *ngIf="userData">
+    <h3 class="ui header">
+        <i aria-hidden="true" class="user secret icon"></i>
+        <div class="content">
+          Welcome {{userData.firstName}}!!
+          <div><h4 class="ui header">{{welcomeMessage}}</h4></div>
+        </div>
+    </h3>
+</section>

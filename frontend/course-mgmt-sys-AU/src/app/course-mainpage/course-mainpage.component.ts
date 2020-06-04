@@ -40,7 +40,6 @@ export class CourseMainpageComponent implements OnInit {
     
     // get course and instructor data
     this.getCourseData();
-    this.getCreatorData();
 
     // get enrollment status for logged user
     this.getEnrollementStatus();
@@ -52,6 +51,11 @@ export class CourseMainpageComponent implements OnInit {
   getCourseData(){
     this.courseService.getCourseDetails(this.courseId).subscribe(
       data => {
+        if(data == null) { 
+          this.creatorId = 'NO_CONTENT';
+          return; 
+        }
+
         this.courseData = data;
         this.skills = this.courseData.skillsAcquired.split(';');
         this.creatorId = this.courseData.creatorId;
