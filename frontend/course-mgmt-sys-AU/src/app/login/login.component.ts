@@ -1,11 +1,10 @@
-import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { AutheticateLoginService } from '../services/autheticate-login.service';
 import { RegisterGoogleUsersService } from '../services/register-google-users.service';
 import { Md5 } from 'ts-md5/dist/md5';
-import { AUTHENTICATED_USER } from '../app.constants';
 
 @Component({
   selector: 'app-login',

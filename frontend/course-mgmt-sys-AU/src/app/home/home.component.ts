@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   view: any = [700, 200];
   gradient: boolean = false;
-  courseStats: any[];
+  courseStats: any[] = [...courseStats];
   courseCreated: number;
   enrollmentCount: number;
 
@@ -37,6 +37,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private courseService: CourseDataService) {
     Object.assign(this, { courseStats });
+    
+    this.getGlobalStats();
+    this.courseStats = [...this.courseStats];
   } 
 
   ngOnInit(): void {
@@ -89,8 +92,8 @@ export class HomeComponent implements OnInit {
       }
     }
 
-    courseStats[0].value = active;
-    courseStats[1].value = inactive;
+    this.courseStats[0].value = active;
+    this.courseStats[1].value = inactive;
     this.courseCreated = courseCreatedCount;
   }
 }
