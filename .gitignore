@@ -1,6 +1,9 @@
 # Node
 frontend/course-mgmt-sys-AU/node_modules
 
+#Coverage
+frontend/course-mgmt-sys-AU/coverage
+
 # macOS
 .DS_Store
 .AppleDouble
@@ -9,3 +12,6 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
+
+#Metadata
+backend/.metadata
