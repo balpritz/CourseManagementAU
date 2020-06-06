@@ -37,7 +37,38 @@ fdescribe('LoginComponent Tests', () => {
     fixture.detectChanges();
   });
 
+  // isolated tests on the login component
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('is component initial state ok', () => {
+    expect(component.invalidLogin).toBeFalsy();
+    expect(component.loginForm).toBeDefined();
+    expect(component.loginForm.invalid).toBeTruthy();
+    expect(component.emailId).toBeUndefined();
+    expect(component.password).toBeUndefined();
+  });
+
+  it('is form invalid when empty', () => {
+    expect(component.loginForm.valid).toBeFalsy();
+
+    component.loginForm.controls['emailId'].setValue('abc@gmail.com');
+    expect(component.loginForm.valid).toBeFalsy();
+
+    component.loginForm.controls['password'].setValue('abc');
+    expect(component.loginForm.valid).toBeTruthy();
+  });
+
+  it('is form invalid when provided bad email', () => {
+    component.loginForm.controls['emailId'].setValue('gibberish.com');
+    component.loginForm.controls['password'].setValue('abc');
+
+    expect(component.loginForm.valid).toBeFalsy();
+
+    component.loginForm.controls['emailId'].setValue('abc@gmail.com');
+    expect(component.loginForm.valid).toBeTruthy();
+  });
+
 });
