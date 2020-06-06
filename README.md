@@ -29,7 +29,7 @@ That's about it for tooling you'll need to run the project, let's move onto the 
 
 #### Project installation and server
 
-Now that you've pulled down the repo and have everything setup, using the terminal you'll need to `cd` into `./frontend/course-mgmt-sys-AU` of the directory that you cloned the repo into and run some quick tasks:
+Now that you've pulled down the repo and have everything set up, using the terminal you'll need to `cd` into `./frontend/course-mgmt-sys-AU` of the directory that you cloned the repo into and run some quick tasks:
 
 ```
 cd <./frontend/course-mgmt-sys-AU>
@@ -40,7 +40,7 @@ npm install
 
 Then go back to the root directory and `cd` into `./backend/course-management-system` directory to build the Spring Boot Project in order to set up all the Maven dependencies. 
 
-This will then setup all the development and production dependencies we need. All that is left, is to boot up all the servers that are required.
+This will then set up all the development and production dependencies we need. All that is left, is to boot up all the servers that are required.
 
 1. To boot up the server for your Angular application, `cd` into `./frontend/course-mgmt-sys-AU` and run the following command:
 
@@ -54,11 +54,11 @@ ng serve
 
 Visit `localhost:4200` to view the application.
 
-2. To boot up your backend server in order to activate your end points to service, RESTful API requests, open up the `./backend/course-management-system` repository in Eclipse and run it as a Java application.
+2. To boot up your backend server in order to activate your endpoints to service, RESTful API requests, open up the `./backend/course-management-system` repository in Eclipse and run it as a Java application.
 
-Visit `localhost:8080` to interact with the end-points using [Postman](https://www.postman.com/downloads) or any other API testing utility, if need be.
+Visit `localhost:8080` to interact with the end-points using [Postman](https://www.postman.com/downloads) or any other API testing utility if need be.
 
-3. Finally, open up MySQL workbench, to start the database server. NOTE: Do configure the application properties of the Java project to connect with your database server.
+3. Finally, open up MySQL workbench, to start the database server. `NOTE`: Do, configure the application properties of the Java project to connect with your database server.
 
 You're good to go now! Start using the portal at `localhost:4200`.
 
@@ -76,11 +76,11 @@ You're good to go now! Start using the portal at `localhost:4200`.
 
 <div align="center"><img src="https://i.ibb.co/nq29tcQ/new-course.png" alt="new-course" border="0"></div>
 
-* The `edit-courses page` allows a user to edit any of the courses he/ she might have created. The actions inculde: `updating` the course details, `change` course status, `delete` a course, and `view` a list of all users enrolled in that course. 
+* The `edit-courses page` allows a user to edit any of the courses he/ she might have created. The actions include: `updating` the course details, `change` course status, `delete` a course, and `view` a list of all users enrolled in that course. 
 
 <div align="center"><img src="https://i.ibb.co/g7NLG9x/edit-courses.png" alt="edit-courses" border="0"></div>
 
-* On the `participant-list page` for a specific course, the instructor has the option to `mail` any particular participant or all of them, if need be. Clicking on the mail icon opens up the default mailing application on the users system pre-populated with the recipient list.
+* On the `participant-list page` for a specific course, the instructor has the option to `mail` any particular participant or all of them, if need be. Clicking on the mail icon opens up the default mailing application on the user's system pre-populated with the recipient list.
 
 <div align="center"><img src="https://i.ibb.co/C6Dg8B3/participant-list.png" alt="participant-list" border="0"></div>
 
@@ -88,7 +88,7 @@ You're good to go now! Start using the portal at `localhost:4200`.
 
 <div align="center"><img src="https://i.ibb.co/F03DqjX/view-courses.png" alt="view-courses" border="0"></div> 
 
-* On the `course-mainpage`, the user can `view` the complete `course description`, `pre-requisites`, `skills acquired` and other useful information such as `average course ratings`, `number of trainees enrolled`, and the `feedback` provided by those enrolled for the course. You have the option to `mail` the instructor by clicking on the mail icon placed next to the instructor's name, view the `training material` for the course by clicking the github icon placed next to the course title, `enroll` for a course using the enroll button, and provide your own feedback for the course if enrolled.
+* On the `course main page`, the user can `view` the complete `course description`, `pre-requisites`, `skills acquired` and other useful information such as `average course ratings`, the `number of trainees enrolled`, and the `feedback` provided by those enrolled for the course. You have the option to `mail` the instructor by clicking on the mail icon placed next to the instructor's name, view the `training material` for the course by clicking the Github icon placed next to the course title, `enroll` for a course using the enroll button, and provide your own feedback for the course if enrolled.
 
 <div align="center"><img src="https://i.ibb.co/KjvpF4q/course-mainpage.png" alt="course-mainpage" border="0"></div>
 
