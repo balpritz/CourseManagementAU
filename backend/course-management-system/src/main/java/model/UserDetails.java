@@ -15,7 +15,7 @@ public class UserDetails {
 	@Column(name = "userId")
 	private String id;
 	private String firstName;
-	private String LastName;
+	private String lastName;
 	private String email;
 	private String password;
 	private String photoUrl;
@@ -41,11 +41,11 @@ public class UserDetails {
 	}
 	
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 	
 	public String getEmail() {
@@ -76,7 +76,17 @@ public class UserDetails {
 
 	@Override
 	public String toString() {
-		return "UserDetails [id=" + id + ", firstName=" + firstName + ", LastName=" + LastName + ", email=" + email
+		return "UserDetails [id=" + id + ", firstName=" + firstName + ", LastName=" + lastName + ", email=" + email
 				+ ", password=" + password + ", photoUrl=" + photoUrl + "]";
 	}
+
+	public UserDetails(String id, String firstName, String lastName, String email, String password, String photoUrl) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.photoUrl = photoUrl;
+	}
+	
 }

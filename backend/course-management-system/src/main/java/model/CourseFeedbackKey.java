@@ -61,5 +61,10 @@ public class CourseFeedbackKey implements Serializable {
 	}
 
 	public CourseFeedbackKey() {}
+
+	public CourseFeedbackKey(String userId, int courseId) {
+		this.userId = userId;
+		this.courseId = courseId;
+	}
 	
 }

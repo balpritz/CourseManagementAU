@@ -111,5 +111,19 @@ public class CourseDetails {
 	}
 
 	public CourseDetails() {}
+
+	public CourseDetails(int courseId, String courseTitle, String courseDescription, String creatorId,
+			String skillsAcquired, String githubRepoLink, Boolean isCourseActive, LocalDate courseCreationDate,
+			LocalDate lastUpdated) {
+		this.courseId = courseId;
+		this.courseTitle = courseTitle;
+		this.courseDescription = courseDescription;
+		this.creatorId = creatorId;
+		this.skillsAcquired = skillsAcquired;
+		this.githubRepoLink = githubRepoLink;
+		this.isCourseActive = isCourseActive;
+		this.courseCreationDate = courseCreationDate;
+		this.lastUpdated = lastUpdated;
+	}
 	
 }
