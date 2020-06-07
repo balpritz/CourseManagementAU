@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditCoursesComponent } from './edit-courses.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HeaderNavComponent } from '../header-nav/header-nav.component';
+import { FormsModule } from '@angular/forms';
 
 describe('EditCoursesComponent', () => {
   let component: EditCoursesComponent;
@@ -8,7 +12,15 @@ describe('EditCoursesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditCoursesComponent ]
+      imports: [
+        HttpClientModule,
+        RouterTestingModule,
+        FormsModule,
+      ],
+      declarations: [ 
+        EditCoursesComponent,
+        HeaderNavComponent,
+      ]
     })
     .compileComponents();
   }));

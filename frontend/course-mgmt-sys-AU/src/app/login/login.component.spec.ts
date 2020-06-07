@@ -7,7 +7,7 @@ import { AuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { getAuthServiceConfigs } from '../socialloginConfig';
 import { HttpClientModule } from '@angular/common/http';
 
-fdescribe('LoginComponent Tests', () => {
+describe('LoginComponent Tests', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
@@ -29,6 +29,7 @@ fdescribe('LoginComponent Tests', () => {
       ]
     })
     .compileComponents();
+
   }));
 
   beforeEach(() => {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import model.UserDetails;
 import repository.UserRepository;
 
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins= {"http://localhost:4200", "http://localhost:9876"})
 @RestController
 public class UserResource {
 	

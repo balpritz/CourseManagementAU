@@ -20,7 +20,7 @@ import repository.CourseFeedbackRepository;
 import repository.CourseRepository;
 import repository.UserRepository;
 
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins={"http://localhost:4200", "http://localhost:9876"})
 @RestController
 public class CourseFeedbackResource {
 	
