@@ -94,6 +94,7 @@ export class HomeComponent implements OnInit {
 
     this.courseStats[0].value = active;
     this.courseStats[1].value = inactive;
+    this.courseStats = [...this.courseStats];
     this.courseCreated = courseCreatedCount;
   }
 }

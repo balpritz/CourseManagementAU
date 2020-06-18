@@ -14,14 +14,14 @@
         <div role="listitem" class="item" *ngFor="let en of enrollmentData">
             <i aria-hidden="true" class="mail big icon avatar"></i>
             <div class="content"><div class="header">
-                <a href="mailto:{{en.user.email}}" style="color: black;">{{en.user.firstName}} {{en.user.lastName}}</a>
+                <a href="mailto:{{en.user.email}}" target="_blank" style="color: black;">{{en.user.firstName}} {{en.user.lastName}}</a>
             </div></div>
         </div>
         <!-- Mail all -->
         <div role="listitem" class="item" *ngIf="enrollmentData.length">
             <i aria-hidden="true" class="mail big icon avatar" style="color: #1767b1;"></i>
             <div class="content"><div class="header">
-                <a href="mailto:{{mailAll}}" style="color: #1767b1;">Mail all Participants</a>
+                <a href="mailto:{{mailAll}}" target="_blank" style="color: #1767b1;">Mail all Participants</a>
             </div></div>
         </div>
     </div>  

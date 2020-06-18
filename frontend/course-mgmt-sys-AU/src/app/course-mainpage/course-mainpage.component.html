@@ -17,7 +17,7 @@
         </a>
         <div class="sub header" *ngIf="creatorData && enrollmentData">
           Created by {{creatorData.firstName}} {{creatorData.lastName}}
-          <a href="mailto:{{creatorData.email}}" style="color: rgb(92, 87, 87);">
+          <a href="mailto:{{creatorData.email}}" target="_blank" style="color: rgb(92, 87, 87);">
           &nbsp;<i class="mail icon" *ngIf="creatorData"></i>
           </a>
           &emsp;Last updated {{courseData.lastUpdated}}&emsp;Average rating: {{averageCourseRating}}
